@@ -1,0 +1,51 @@
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.1'
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    lintOptions {
+        abortOnError false
+    }
+    repositories {
+            maven {
+                url 'https://dl.bintray.com/roofstreet/maven/'
+            }
+
+
+//        flatDir {
+//            dirs '\\Users\\malekhassani\\Desktop\\Malek\\Veery.android\\veery\\build\\outputs\\aar'
+//            dirs '/Users/malekhassani/Desktop/Malek/Veery.android/veery/build/outputs/aar'
+//        }
+    }
+
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.facebook.react:react-native:+'
+    compile 'com.roofstreet.android:veery:1.0.0@aar'
+    compile 'com.google.android.gms:play-services-location:11.0.2'
+    compile 'com.google.android.gms:play-services-maps:11.0.2'
+}
+  

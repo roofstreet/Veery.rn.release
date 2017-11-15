@@ -1,0 +1,18 @@
+{
+  "name": "react-native-veery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "react": "16.0.0",
+    "react-native": "^0.50.3"
+  }
+}

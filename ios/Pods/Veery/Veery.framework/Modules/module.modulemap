@@ -1,0 +1,11 @@
+framework module Veery {
+  umbrella header "Veery.h"
+
+  export *
+  module * { export * }
+}
+
+module Veery.Swift {
+    header "Veery-Swift.h"
+    requires objc
+}
