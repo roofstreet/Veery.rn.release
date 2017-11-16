@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2AD61D4077EDD11AF071C0E7 /* libPods-RNVeery.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F35F2308225FD3A1F697D4 /* libPods-RNVeery.a */; };
 		3E85DE881FBC8D44009C03F6 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E85DE6C1FBC8D0A009C03F6 /* libReact.a */; };
 		3E85DE8D1FBC8F8B009C03F6 /* RNVeery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85DE8C1FBC8F8B009C03F6 /* RNVeery.swift */; };
 		B3E7B58A1CC2AC0600A0062D /* RNVeery.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNVeery.m */; };
@@ -144,7 +143,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E85DE881FBC8D44009C03F6 /* libReact.a in Frameworks */,
-				2AD61D4077EDD11AF071C0E7 /* libPods-RNVeery.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,11 +192,11 @@
 				B3E7B5881CC2AC0600A0062D /* RNVeery.h */,
 				3E85DE8C1FBC8F8B009C03F6 /* RNVeery.swift */,
 				B3E7B5891CC2AC0600A0062D /* RNVeery.m */,
+				3E85DE8B1FBC8F8B009C03F6 /* RNVeery-Bridging-Header.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				3E85DE5A1FBC8D09009C03F6 /* React.xcodeproj */,
 				3E85DE871FBC8D44009C03F6 /* Frameworks */,
 				BA10CD6C97AE10E301E67383 /* Pods */,
-				3E85DE8B1FBC8F8B009C03F6 /* RNVeery-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
