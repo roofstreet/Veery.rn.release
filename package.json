@@ -1,6 +1,10 @@
 {
   "name": "react-native-veery",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roofstreet/Veery.rn.release.git"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,7 +13,10 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
+  "author": {
+    "name": "Malek HASSANI",
+    "email": "malek@roofstreet.io"
+  },
   "license": "MIT",
   "dependencies": {
     "react": "16.0.0",
