@@ -2,6 +2,7 @@
 # react-native-veery
 
 ## Getting started
+`$ npm install`
 
 `$ npm install react-native-veery --save`
 
@@ -37,9 +38,9 @@
 
 ## Usage
 ```javascript
-import RNVeery from 'react-native-veery';
+import Veery from 'react-native-veery';
 
 // TODO: What to do with the module?
-RNVeery;
+Veery;
 ```
   

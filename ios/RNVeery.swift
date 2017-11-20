@@ -105,7 +105,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
     
     @objc func getPois(_ callback : RCTResponseSenderBlock) -> Void{
         let pois = veery.getPois()
-        NSLog("getPois -----count-->\(pois.count())")
+        //NSLog("getPois -----count-->\(pois.count())")
         callback([poisToNSDictionary(pois: pois)])
         
     }
@@ -121,7 +121,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
     // MARK: - Predictions
     @objc func getNextTrip(_ callback : RCTResponseSenderBlock) -> Void{
         if let prediction = veery.getNextTrip(){
-            NSLog("getNextTrip -----getArrivalName-->\(prediction.getArrivalName())")
+//            NSLog("getNextTrip -----getArrivalName-->\(prediction.getArrivalName())")
             callback([predictionToNSDictionary(predictions: prediction)])
         }else{
             callback([NSNull()])
@@ -137,7 +137,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
     }
     // MARK: - Notfications
     @objc func registerNotification(_ subscription : NSString ,_ format : NSString ){
-        NSLog("registerNotification ------------\(subscription)----\(format)")
+//        NSLog("registerNotification ------------\(subscription)----\(format)")
         veery.registerNotification(subscription as String, format as String)
     }
     @objc func unregisterNotification(_ subscription : NSString){
@@ -159,7 +159,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         
     }
     @objc func VeeryNotificationHandler(_ data : NSDictionary,_ callback : RCTResponseSenderBlock){
-        NSLog("ReactVeery VeeryNotificationHandler-----\(data as! [AnyHashable : Any])")
+//        NSLog("ReactVeery VeeryNotificationHandler-----\(data as! [AnyHashable : Any])")
         callback([veery.apnsMessageHandler(data as! [AnyHashable : Any])])
     }
     // MARK: - Tags
@@ -274,11 +274,11 @@ class RNVeery : RCTViewManager , VeeryDelegate{
             "getBoundingBox" : ["southwest" : southwestcoor,"northest" : northestcoor] as NSDictionary
             
             ] as NSDictionary
-        NSLog("veeryLocationsToWritableMap -----locs [toGEOJSON_MULTIPOINT]------->\(locs ["toGEOJSON_MULTIPOINT"]!)")
-        NSLog("veeryLocationsToWritableMap -----locs[getBoundingBox]------->\(locs["getBoundingBox"]!)")
-        NSLog("veeryLocationsToWritableMap -----locs [toArray]------->\(locs ["toArray"]!)")
-        NSLog("veeryLocationsToWritableMap -----locs [toGeoJSONArray]------->\(locs ["toGeoJSONArray"]!)")
-        NSLog("veeryLocationsToWritableMap -----locs ---------->\(locs )")
+//        NSLog("veeryLocationsToWritableMap -----locs [toGEOJSON_MULTIPOINT]------->\(locs ["toGEOJSON_MULTIPOINT"]!)")
+//        NSLog("veeryLocationsToWritableMap -----locs[getBoundingBox]------->\(locs["getBoundingBox"]!)")
+//        NSLog("veeryLocationsToWritableMap -----locs [toArray]------->\(locs ["toArray"]!)")
+//        NSLog("veeryLocationsToWritableMap -----locs [toGeoJSONArray]------->\(locs ["toGeoJSONArray"]!)")
+//        NSLog("veeryLocationsToWritableMap -----locs ---------->\(locs )")
         return locs as NSDictionary
     }
     

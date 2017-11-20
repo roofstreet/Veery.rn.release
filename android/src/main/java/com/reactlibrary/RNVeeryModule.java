@@ -50,16 +50,10 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
     // https://facebook.github.io/react-native/docs/native-modules-android.html#sending-events-to-javascript
     reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, eventData);
   }
-  @ReactMethod
-  public void exampleMethod () {
-    // An example native method that you will expose to React
-    // https://facebook.github.io/react-native/docs/native-modules-android.html#the-toast-module
-  }
+
   @ReactMethod
   public void serviceConnect(){
-    //veery = new Veery(getReactApplicationContext().getApplicationContext());
-    //final Activity activity = getCurrentActivity();
-    //veery = new Veery(activity);
+
     ifVeery();
     veery.serviceConnect();
     Log.i("RNVeery","ServiceConnect");
@@ -102,9 +96,9 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
 
   }
   @ReactMethod
-  public void VeeryNotificationHandler(String data, Callback callback){
+  public void VeeryNotificationHandler(String sub, int id){
     ifVeery();
-    //callback.invoke(veery.firebaseMessageHandler(data));
+    veery.firebaseMessageHandler(sub,id);
   }
 
   //-----------------------Geolocation-----------------------------------
@@ -431,7 +425,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
       map.putDouble("probability", predictions.getProbability());
 
 
-      map.putDouble("DestinationLongitude", predictions.getDestinationLongetude());
+      map.putDouble("DestinationLongitude", predictions.getDestinationLongitude());
       // Predictions.getDestinationLatitude()
       map.putDouble("DestinationLatitude", predictions.getDestinationLatitude());
 

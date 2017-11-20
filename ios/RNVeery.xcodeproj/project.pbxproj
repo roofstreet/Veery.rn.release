@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E85DE881FBC8D44009C03F6 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E85DE6C1FBC8D0A009C03F6 /* libReact.a */; };
 		3E85DE8D1FBC8F8B009C03F6 /* RNVeery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85DE8C1FBC8F8B009C03F6 /* RNVeery.swift */; };
 		B3E7B58A1CC2AC0600A0062D /* RNVeery.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNVeery.m */; };
 /* End PBXBuildFile section */
@@ -133,7 +132,6 @@
 		67178738932B71211C1AAEAD /* Pods-RNVeery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNVeery.release.xcconfig"; path = "Pods/Target Support Files/Pods-RNVeery/Pods-RNVeery.release.xcconfig"; sourceTree = "<group>"; };
 		A4F35F2308225FD3A1F697D4 /* libPods-RNVeery.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNVeery.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5A7BDD481E4FAC9FBB254E /* Pods-RNVeery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNVeery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RNVeery/Pods-RNVeery.debug.xcconfig"; sourceTree = "<group>"; };
-		B3E7B5881CC2AC0600A0062D /* RNVeery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNVeery.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNVeery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNVeery.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,7 +140,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E85DE881FBC8D44009C03F6 /* libReact.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +186,6 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				B3E7B5881CC2AC0600A0062D /* RNVeery.h */,
 				3E85DE8C1FBC8F8B009C03F6 /* RNVeery.swift */,
 				B3E7B5891CC2AC0600A0062D /* RNVeery.m */,
 				3E85DE8B1FBC8F8B009C03F6 /* RNVeery-Bridging-Header.h */,
@@ -510,8 +506,10 @@
 				);
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNVeery;
+				REEXPORTED_FRAMEWORK_NAMES = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "RNVeery-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -532,8 +530,10 @@
 				);
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNVeery;
+				REEXPORTED_FRAMEWORK_NAMES = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "RNVeery-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
