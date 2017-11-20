@@ -23,26 +23,26 @@ class Veery {
   static  NOTIF_PREDICTION = "prediction";
 
   static serviceConnect(){
-    VeeryModule.serviceConnect();
+    RNVeery.serviceConnect();
   }
   static serviceDisconnect(){
-    VeeryModule.serviceDisconnect();
+    RNVeery.serviceDisconnect();
   }
   static serviceResume(){
-    VeeryModule.serviceResume();
+    RNVeery.serviceResume();
   }
   static servicePause(){
-    VeeryModule.servicePause();
+    RNVeery.servicePause();
   }
   static setApiKeySecret(key){
-    VeeryModule.setApiKeySecret(key);
+    RNVeery.setApiKeySecret(key);
   }
   static activate(x){
-    VeeryModule.activate(x);
+    RNVeery.activate(x);
   }
 //--------------currentLocation--------------------------------
   static getCurrentLocation(callback){
-    VeeryModule.getCurrentLocation(
+    RNVeery.getCurrentLocation(
       (position)=> {
         if (position !== null) {
           callback(position);
@@ -55,7 +55,7 @@ class Veery {
   }
 
   static getCurrentLocationAge(callback){
-    VeeryModule.getCurrentLocationAge(
+    RNVeery.getCurrentLocationAge(
       (locationAge)=>{
         if (locationAge !== null) {
           callback(locationAge);
@@ -66,14 +66,14 @@ class Veery {
     )
   }
   static requestLocationUpdate(){
-    VeeryModule.requestLocationUpdate();
+    RNVeery.requestLocationUpdate();
   }
   static stopLocationUpdate(){
-    VeeryModule.stopLocationUpdate();
+    RNVeery.stopLocationUpdate();
   }
 //-------------------------Pois-------------------------------------
   static getPois(callback){
-    VeeryModule.getPois(
+    RNVeery.getPois(
       (call) => {
         if (call !== null){
           let pois = new Veery.Pois(call);
@@ -86,10 +86,10 @@ class Veery {
     )
   }
   static requestPoiUpdate(){
-    VeeryModule.requestPoiUpdate();
+    RNVeery.requestPoiUpdate();
   }
   static stopPoiUpdate(){
-    VeeryModule.stopPoiUpdate();
+    RNVeery.stopPoiUpdate();
   }
   static  Pois = class {
     constructor(pois) {
@@ -116,7 +116,7 @@ class Veery {
   //------------------------LocationHistory--------------------------
 
   static getLocationHistory(format,since,until,callback){
-    VeeryModule.getLocationHistory(format,since,until,
+    RNVeery.getLocationHistory(format,since,until,
       (call) => {
         //console.log('getlocation history App.js------call--------->',call,'<------------');
         if (call !== null){
@@ -129,7 +129,7 @@ class Veery {
       })
   }
   static countLocationHistory(format,since,until,callback){
-    VeeryModule.countLocationHistory(format,since,until,
+    RNVeery.countLocationHistory(format,since,until,
     (count) =>{
       //console.log('VeeryModule : countLocationHistory [count]',count);
       callback(count);
@@ -137,13 +137,13 @@ class Veery {
   }
 
   static updateLocationTest(){
-    VeeryModule.updateLocation();
+    RNVeery.updateLocation();
   }
   static requestRouteMatch(){
-    VeeryModule.requestRouteMatch();
+    RNVeery.requestRouteMatch();
   }
   static stopRouteMatch(){
-    VeeryModule.stopRouteMatch();
+    RNVeery.stopRouteMatch();
   }
 
   static Locations = class {
@@ -177,7 +177,7 @@ class Veery {
   //------------------------Predictions-------------------------
 
   static getNextTrip(callback){
-    VeeryModule.getNextTrip(
+    RNVeery.getNextTrip(
       (nexttrip) =>{
         if (nexttrip !== null) {
           let predictions = new Veery.Predictions(nexttrip);
@@ -190,10 +190,10 @@ class Veery {
     )
   }
   static requestPredictionUpdate(){
-    VeeryModule.requestPredictionUpdate();
+    RNVeery.requestPredictionUpdate();
   }
   static stopPredictionUpdate(){
-    VeeryModule;stopPredictionUpdate();
+    RNVeery;stopPredictionUpdate();
   }
   static Predictions = class {
     constructor(predictions) {
@@ -245,11 +245,11 @@ class Veery {
   // Subscribes and Tags
 
   static setVeeryToken(token){
-    VeeryModule.setVeeryToken(token);
+    RNVeery.setVeeryToken(token);
   }
   static VeeryNotificationHandler(notification, callback){
     if (Platform.OS === 'ios' ) {
-      VeeryModule.VeeryNotificationHandler(notification.getData(), (call) => {
+      RNVeery.VeeryNotificationHandler(notification.getData(), (call) => {
         callback(call);
       });
     }else {
@@ -268,18 +268,18 @@ class Veery {
             switch (sub) {
               case "routematch":
               case "routematch_silent":
-                VeeryModule.VeeryNotificationHandler(sub,msg.trip_id);
+                RNVeery.VeeryNotificationHandler(sub,msg.trip_id);
                 break;
               case "prediction":
               case "prediction_silent":
-                VeeryModule.VeeryNotificationHandler(sub,msg.prediction_id);
+                RNVeery.VeeryNotificationHandler(sub,msg.prediction_id);
                 break;
               case "poi":
               case "poi_silent":
-                VeeryModule.VeeryNotificationHandler(sub,msg.poi_id);
+                RNVeery.VeeryNotificationHandler(sub,msg.poi_id);
                 break;
               case "hello_silent":
-                VeeryModule.VeeryNotificationHandler(sub,0);
+                RNVeery.VeeryNotificationHandler(sub,0);
                 break;
               default:
                 break;
@@ -294,19 +294,19 @@ class Veery {
   }
   static registerNotification(subscription , format){
     //console.log('VeeryModule ===> registerNotification',subscription)
-    VeeryModule.registerNotification(subscription,format);
+    RNVeery.registerNotification(subscription,format);
   }
   static unregisterNotification(subscription){
-    VeeryModule.unregisterNotification(subscription);
+    RNVeery.unregisterNotification(subscription);
   }
   static setTags(tagName,value){
-    VeeryModule.setTags(tagName,value);
+    RNVeery.setTags(tagName,value);
   }
   static getTags(tagName){
-    VeeryModule.getTags(tagName);
+    RNVeery.getTags(tagName);
   }
   static unsetTags(tagName){
-    VeeryModule.unsetTags(tagName);
+    RNVeery.unsetTags(tagName);
   }
 }
 //export {Veery};
