@@ -27,6 +27,8 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
   public static final int BACKGROUND = Veery.BACKGROUND;
   public static final int BACKEND = Veery.BACKEND;
   public static final int GEOPROFILE = Veery.GEOPROFILE;
+  private static String TOKEN = "";
+  private  static boolean TOKENN_SENT = false;
   private boolean mRequestLocation = false;
   private boolean mRequestRouteMatch = false;
   private boolean mRequestPoiUpdate = false;
@@ -54,85 +56,90 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
   @ReactMethod
   public void serviceConnect(){
 
-    ifVeery();
+   if(ifVeery())
     veery.serviceConnect();
     Log.i("RNVeery","ServiceConnect");
   }
   @ReactMethod
   public void serviceDisconnect(){
-    ifVeery();
-
-    veery.serviceDisconnect();
+   if(ifVeery())
+     veery.serviceDisconnect();
   }
 
   @ReactMethod
   public void serviceResume(){
-    ifVeery();
-    veery.serviceResume();
+   if(ifVeery())
+     veery.serviceResume();
   }
 
   @ReactMethod
   public void servicePause(){
-    ifVeery();
-    veery.servicePause();
+   if(ifVeery())
+      veery.servicePause();
   }
 
   @ReactMethod
   public void setApiKeySecret(String apiKeySecret){
-    ifVeery();
+   if(ifVeery())
     veery.setApiKeySecret(apiKeySecret);
     Log.i(REACT_CLASS,"setApiKeySecret"+apiKeySecret);
   }
   @ReactMethod
   public void activate(int level){
-    ifVeery();
+   if(ifVeery())
     veery.activate(level);
     Log.i(REACT_CLASS,"activate "+level);
   }
   @ReactMethod
   public void setVeeryToken(String token){
-    ifVeery();
-    veery.setFirebaseToken(token);
+
+     if(ifVeery()) {
+       veery.setFirebaseToken(token);
+     }else{
+       TOKEN = token;
+     }
 
   }
   @ReactMethod
   public void VeeryNotificationHandler(String sub, int id){
-    ifVeery();
+   if(ifVeery())
     veery.firebaseMessageHandler(sub,id);
   }
 
   //-----------------------Geolocation-----------------------------------
   @ReactMethod
   public void getCurrentLocation(Callback position){
-    ifVeery();
-    Location location =  veery.getCurrentLocation();
+   if(ifVeery()) {
+     Location location = veery.getCurrentLocation();
 
-    if (location != null) {
-      final WritableMap map = new WritableNativeMap();
-      map.putDouble("Accuracy", location.getAccuracy());
-      map.putDouble("Altitude", location.getAltitude());
-      map.putDouble("Bearing", location.getBearing());
-      map.putDouble("ElapsedRealtimeNanos", location.getElapsedRealtimeNanos());
-      map.putDouble("Latitude", location.getLatitude());
-      map.putDouble("Longitude", location.getLongitude());
-      map.putString("Provider", location.getProvider());
-      map.putDouble("Speed", location.getSpeed());
-      map.putDouble("Time", location.getTime());
-      //Log.i(REACT_CLASS,"count = " +veery.countLocationHistory(1,null,null)+ ", Location = " + map.toString());
-      position.invoke(map);
-    }
+     if (location != null) {
+       final WritableMap map = new WritableNativeMap();
+       map.putDouble("Accuracy", location.getAccuracy());
+       map.putDouble("Altitude", location.getAltitude());
+       map.putDouble("Bearing", location.getBearing());
+       map.putDouble("ElapsedRealtimeNanos", location.getElapsedRealtimeNanos());
+       map.putDouble("Latitude", location.getLatitude());
+       map.putDouble("Longitude", location.getLongitude());
+       map.putString("Provider", location.getProvider());
+       map.putDouble("Speed", location.getSpeed());
+       map.putDouble("Time", location.getTime());
+       //Log.i(REACT_CLASS,"count = " +veery.countLocationHistory(1,null,null)+ ", Location = " + map.toString());
+       position.invoke(map);
+     }
+   }
   }
   @ReactMethod
   public void getCurrentLocationAge(){
-    ifVeery();
+   if(ifVeery())
     veery.getCurrentLocationAge();
   }
 
   @ReactMethod
   public void stopLocationUpdate(){
-    ifVeery();
-    mRequestLocation = false;
-    veery.stopLocationUpdate();
+   if(ifVeery()) {
+     mRequestLocation = false;
+     veery.stopLocationUpdate();
+   }
   }
 
   ///For Debug
@@ -140,91 +147,92 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
   // TODO : delete
   @ReactMethod
   public void updateLocation(){
-    ifVeery();
+   if(ifVeery())
     if (veery.getCurrentLocation() != null)
       onLocationUpdate(veery.getCurrentLocation(),veery.getCurrentLocationAge());
   }
 
   @ReactMethod
   public void requestLocationUpdate(){
-    ifVeery();
-    mRequestLocation = true;
+   if(ifVeery())
+      mRequestLocation = true;
   }
   //-----------------LocationHistory-------------------
 
   @ReactMethod
   public void getLocationHistory(int format, double since,double until, Callback callback){
-    ifVeery();
+   if(ifVeery()) {
 
-    Veery.Locations mLocations = veery.getLocationHistory(format,(long) since, (long) until);
-    if (mLocations != null){
-      callback.invoke(veeryLocationsToWritableMap(mLocations,format));
-    }else{
-      callback.invoke(null);
-    }
-
+     Veery.Locations mLocations = veery.getLocationHistory(format, (long) since, (long) until);
+     if (mLocations != null) {
+       callback.invoke(veeryLocationsToWritableMap(mLocations, format));
+     } else {
+       callback.invoke(null);
+     }
+   }
   }
   @ReactMethod
   public void countLocationHistory(int format, double since, double until, Callback callback){
-    ifVeery();
+   if(ifVeery())
     callback.invoke(veery.countLocationHistory(format,(long)since,(long) until));
   }
   @ReactMethod
   public void requestRouteMatch(){
-    ifVeery();
-    mRequestRouteMatch = true;
+   if(ifVeery())
+      mRequestRouteMatch = true;
   }
 
   @ReactMethod
   public void stopRouteMatch(){
-    ifVeery();
-    mRequestRouteMatch = false;
+   if(ifVeery())
+      mRequestRouteMatch = false;
   }
   //-----------------------POIs----------------------------
 
   @ReactMethod
   public void getPois(Callback callback){
-    ifVeery();
-    Veery.Pois pois = veery.getPois();
-    if (pois != null){
-      callback.invoke(poisToWritableMap(pois));
-    }else{
-      callback.invoke(null);
-    }
+   if(ifVeery()) {
+     Veery.Pois pois = veery.getPois();
+     if (pois != null) {
+       callback.invoke(poisToWritableMap(pois));
+     } else {
+       callback.invoke(null);
+     }
+   }
   }
   @ReactMethod
   public void requestPoiUpdate(){
-    ifVeery();
-    mRequestPoiUpdate = true;
+   if(ifVeery())
+      mRequestPoiUpdate = true;
   }
   @ReactMethod
   public void stopPoiUpdate(){
-    ifVeery();
-    mRequestPoiUpdate =false;
+   if(ifVeery())
+     mRequestPoiUpdate =false;
   }
   //-----------------Predicted Trip-----------------------
 
   @ReactMethod
   public void getNextTrip(Callback callback){
-    ifVeery();
-    Veery.Predictions predictions = veery.getNextTrip();
-    if (predictions != null){
-      callback.invoke(predictionsToWritableMap(predictions));
-    }else{
-      callback.invoke(null);
-    }
-
+   if(ifVeery()) {
+     Veery.Predictions predictions = veery.getNextTrip();
+     if (predictions != null) {
+       callback.invoke(predictionsToWritableMap(predictions));
+     } else {
+       callback.invoke(null);
+     }
+   }
   }
 
   @ReactMethod
   public void requestPredictionUpdate(){
-    ifVeery();
+   if(ifVeery())
     mRequestPrediction = true;
   }
 
   @ReactMethod
   public void stopPredictionUpdate(){
-    ifVeery();
+   if(ifVeery())
     mRequestPrediction = false;
   }
   //-----------------CallBack---------------------------
@@ -232,7 +240,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
 
   @Override
   public void onLocationUpdate(Location location, long l) {
-    ifVeery();
+
     if (mRequestLocation) {
       final WritableMap map = new WritableNativeMap();
       map.putDouble("Accuracy", location.getAccuracy());
@@ -252,7 +260,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
 
   @Override
   public void onRouteMatch(Veery.Locations locations) {
-    ifVeery();
+   if(ifVeery())
     if (mRequestRouteMatch){
       emitDeviceEvent("RouteMatch",veeryLocationsToWritableMap(locations,Veery.HISTORY_ROUTEMATCH));
     }
@@ -273,103 +281,104 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
   //---------------------Subscribes and Tags----------------------------------
   @ReactMethod
   public void registerNotification(String subscription , String format){
-    ifVeery();
-    veery.registerNotification(subscription,format);
+   if(ifVeery())
+      veery.registerNotification(subscription,format);
   }
   @ReactMethod
   public void unregisterNotification(String subscription){
-    ifVeery();
-    veery.unregisterNotification(subscription);
+   if(ifVeery())
+      veery.unregisterNotification(subscription);
   }
   @ReactMethod
   public void setTags(String tagName, String value){
-    ifVeery();
-    veery.setTags(tagName,value);
+   if(ifVeery())
+      veery.setTags(tagName,value);
   }
 
   @ReactMethod
   public void getTags(String tagName, Callback callback){
-    ifVeery();
-    callback.invoke(veery.getTags(tagName));
+   if(ifVeery())
+      callback.invoke(veery.getTags(tagName));
   }
 
   @ReactMethod
   public void unsetTags(String tagName){
-    ifVeery();
-    veery.unsetTags(tagName);
+   if(ifVeery())
+      veery.unsetTags(tagName);
   }
   //---------------------------RESET DATA----------------------------
   @ReactMethod
   public void resetLocalHistory(){
-    ifVeery();
-    veery.resetLocalHistory();
+   if(ifVeery())
+     veery.resetLocalHistory();
   }
   @ReactMethod
   public void resetBackendHistory(){
-    ifVeery();
-    veery.resetBackendHistory();
+   if(ifVeery())
+      veery.resetBackendHistory();
   }
   @ReactMethod
   public void resetGeoProfileHistory(){
-    ifVeery();
-    veery.resetGeoProfileHistory();
+   if(ifVeery())
+      veery.resetGeoProfileHistory();
   }
   //--------------------------Outils-------------------------
   private WritableMap veeryLocationsToWritableMap (Veery.Locations mLocations, int format){
-    ifVeery();
 
-    final WritableMap map = new WritableNativeMap();
-    //ArrayList<WritableMap> maps = new ArrayList<>();
-    WritableArray maps = new WritableNativeArray();
-    Location[] locations = mLocations.toArray();
-    if (locations != null)
-      for (int i =0; i < locations.length; i++){
-        final WritableMap map1 = new WritableNativeMap();
-        map1.putDouble("Accuracy", locations[i].getAccuracy());
-        map1.putDouble("Altitude", locations[i].getAltitude());
-        map1.putDouble("Bearing", locations[i].getBearing());
-        map1.putDouble("ElapsedRealtimeNanos", locations[i].getElapsedRealtimeNanos());
-        map1.putDouble("Latitude", locations[i].getLatitude());
-        map1.putDouble("Longitude", locations[i].getLongitude());
-        map1.putString("Provider", locations[i].getProvider());
-        map1.putDouble("Speed", locations[i].getSpeed());
-        map1.putDouble("Time", locations[i].getTime());
-        //Log.i(REACT_CLASS,"mLocations["+i+"] = "+ map1);
-        maps.pushMap(map1);
-      }
-    map.putArray("toArray",  maps);
-    if (format == Veery.HISTORY_RAW/* HISTORY_RAW*/) {
-      if ( mLocations.toGeoJSON(Veery.GEOJSON_LINESTRING)!= null) {
-        map.putString("toGEOJSON_LINESTRING", mLocations.toGeoJSON(Veery.GEOJSON_LINESTRING).toString());
-        map.putString("toGEOJSON_MULTIPOINT", mLocations.toGeoJSON(Veery.GEOJSON_MULTIPOINT).toString());
-      }
-    }else {
-      final JSONObject[] objects = mLocations.toGeoJSONArray();
 
-      WritableArray writableArray = new WritableNativeArray();
-      if (objects != null)
-        for (int i =0;i < objects.length;i++){
-          writableArray.pushString(objects.toString());
-          //Log.i(REACT_CLASS,"toGeoJSONArray mLocations["+i+"] = "+ objects.toString());
-        }
-      map.putArray("toGeoJSONArray",writableArray);
-    }
-    if (mLocations.getBoundingBox() != null) {
-      WritableMap northeast = new WritableNativeMap();
-      northeast.putDouble("latitude", mLocations.getBoundingBox().northeast.latitude);
-      northeast.putDouble("longitude", mLocations.getBoundingBox().northeast.longitude);
-      //Log.i(REACT_CLASS,"northeast = "+ northeast);
-      WritableMap southwest = new WritableNativeMap();
-      southwest.putDouble("latitude", mLocations.getBoundingBox().southwest.latitude);
-      southwest.putDouble("longitude", mLocations.getBoundingBox().southwest.longitude);
-      //Log.i(REACT_CLASS,"southwest = "+ southwest);
-      WritableMap boundingbox = new WritableNativeMap();
-      boundingbox.putMap("northeast", northeast);
-      boundingbox.putMap("southwest", southwest);
-      //Log.i(REACT_CLASS,"getBoundingBox = "+ boundingbox);
-      map.putMap("getBoundingBox", boundingbox);
-    }
-    //Log.i(REACT_CLASS,"getLocationHistory = "+ map);
+     final WritableMap map = new WritableNativeMap();
+
+     //ArrayList<WritableMap> maps = new ArrayList<>();
+     WritableArray maps = new WritableNativeArray();
+     Location[] locations = mLocations.toArray();
+     if (locations != null)
+       for (int i = 0; i < locations.length; i++) {
+         final WritableMap map1 = new WritableNativeMap();
+         map1.putDouble("Accuracy", locations[i].getAccuracy());
+         map1.putDouble("Altitude", locations[i].getAltitude());
+         map1.putDouble("Bearing", locations[i].getBearing());
+         map1.putDouble("ElapsedRealtimeNanos", locations[i].getElapsedRealtimeNanos());
+         map1.putDouble("Latitude", locations[i].getLatitude());
+         map1.putDouble("Longitude", locations[i].getLongitude());
+         map1.putString("Provider", locations[i].getProvider());
+         map1.putDouble("Speed", locations[i].getSpeed());
+         map1.putDouble("Time", locations[i].getTime());
+         //Log.i(REACT_CLASS,"mLocations["+i+"] = "+ map1);
+         maps.pushMap(map1);
+       }
+     map.putArray("toArray", maps);
+     if (format == Veery.HISTORY_RAW/* HISTORY_RAW*/) {
+       if (mLocations.toGeoJSON(Veery.GEOJSON_LINESTRING) != null) {
+         map.putString("toGEOJSON_LINESTRING", mLocations.toGeoJSON(Veery.GEOJSON_LINESTRING).toString());
+         map.putString("toGEOJSON_MULTIPOINT", mLocations.toGeoJSON(Veery.GEOJSON_MULTIPOINT).toString());
+       }
+     } else {
+       final JSONObject[] objects = mLocations.toGeoJSONArray();
+
+       WritableArray writableArray = new WritableNativeArray();
+       if (objects != null)
+         for (int i = 0; i < objects.length; i++) {
+           writableArray.pushString(objects.toString());
+           //Log.i(REACT_CLASS,"toGeoJSONArray mLocations["+i+"] = "+ objects.toString());
+         }
+       map.putArray("toGeoJSONArray", writableArray);
+     }
+     if (mLocations.getBoundingBox() != null) {
+       WritableMap northeast = new WritableNativeMap();
+       northeast.putDouble("latitude", mLocations.getBoundingBox().northeast.latitude);
+       northeast.putDouble("longitude", mLocations.getBoundingBox().northeast.longitude);
+       //Log.i(REACT_CLASS,"northeast = "+ northeast);
+       WritableMap southwest = new WritableNativeMap();
+       southwest.putDouble("latitude", mLocations.getBoundingBox().southwest.latitude);
+       southwest.putDouble("longitude", mLocations.getBoundingBox().southwest.longitude);
+       //Log.i(REACT_CLASS,"southwest = "+ southwest);
+       WritableMap boundingbox = new WritableNativeMap();
+       boundingbox.putMap("northeast", northeast);
+       boundingbox.putMap("southwest", southwest);
+       //Log.i(REACT_CLASS,"getBoundingBox = "+ boundingbox);
+       map.putMap("getBoundingBox", boundingbox);
+     }
+     //Log.i(REACT_CLASS,"getLocationHistory = "+ map);
 
     return map;
   }
@@ -467,11 +476,20 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
     return map;
   }
 
-  private void ifVeery(){
+  private boolean ifVeery(){
     if (veery == null) {
-      veery = new Veery(getCurrentActivity());
-      veery.serviceConnect();
+      if (getCurrentActivity()!=null) {
+        veery = new Veery(getCurrentActivity());
+        veery.serviceConnect();
+        if (!TOKENN_SENT){
+          veery.setFirebaseToken(TOKEN);
+          TOKENN_SENT = true;
+        }
+        return true;
+      }
+      return false;
     }
+    return true;
   }
 
   private String dateToString(Calendar cal){
