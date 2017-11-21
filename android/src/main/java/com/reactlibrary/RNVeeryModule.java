@@ -57,7 +57,6 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
   public void serviceConnect(){
 
    if(ifVeery())
-    veery.serviceConnect();
     Log.i("RNVeery","ServiceConnect");
   }
   @ReactMethod
@@ -97,6 +96,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
        veery.setFirebaseToken(token);
      }else{
        TOKEN = token;
+       TOKENN_SENT = false;
      }
 
   }
