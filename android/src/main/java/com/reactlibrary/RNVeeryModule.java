@@ -358,7 +358,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
        WritableArray writableArray = new WritableNativeArray();
        if (objects != null)
          for (int i = 0; i < objects.length; i++) {
-           writableArray.pushString(objects.toString());
+           writableArray.pushString(objects[i].toString());
            //Log.i(REACT_CLASS,"toGeoJSONArray mLocations["+i+"] = "+ objects.toString());
          }
        map.putArray("toGeoJSONArray", writableArray);

@@ -2,6 +2,7 @@
 # react-native-veery
 
 ## Getting started
+
 `$ npm install`
 
 `$ npm install react-native-veery --save`
