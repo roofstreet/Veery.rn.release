@@ -18,8 +18,8 @@
 		56B4198FFFB0DB4C08B6E08A266170D8 /* Pods-RNVeery-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RNVeery-frameworks.sh"; sourceTree = "<group>"; };
 		575611FF51DC9441BDB9F10D67B53284 /* Pods-RNVeery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RNVeery.release.xcconfig"; sourceTree = "<group>"; };
 		7628311C3C3E840DB08B99C6CA832435 /* Pods-RNVeery-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RNVeery-acknowledgements.markdown"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		ACB0B8D001DA24CE9B33EE1CA63EE707 /* libPods-RNVeery.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNVeery.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		ACB0B8D001DA24CE9B33EE1CA63EE707 /* libPods-RNVeery.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-RNVeery.a"; path = "libPods-RNVeery.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9023B685953103F7B4E2304E42A60CD /* Pods-RNVeery-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RNVeery-acknowledgements.plist"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		F7B971B77D971C18FE21D16F4B0E6F83 /* Pods-RNVeery-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RNVeery-resources.sh"; sourceTree = "<group>"; };
@@ -108,6 +108,7 @@
 			children = (
 				B7DF9403CAC9A00DD4A912979BCDE8FE /* Frameworks */,
 			);
+			name = Veery;
 			path = Veery;
 			sourceTree = "<group>";
 		};
