@@ -424,13 +424,13 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
   private WritableMap predictionsToWritableMap(Veery.Predictions predictions){
     WritableMap map = new WritableNativeMap();
 
-    if (predictions.isOK()) {
+
 
       map.putBoolean("isOK", predictions.isOK());
 
       map.putBoolean("isOutdated", predictions.isOutdated());
 
-
+    if (predictions.isOK()) {
       map.putDouble("probability", predictions.getProbability());
 
 
