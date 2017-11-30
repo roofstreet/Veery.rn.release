@@ -136,9 +136,9 @@ class Veery {
     })
   }
 
-  static updateLocationTest(){
-    RNVeery.updateLocation();
-  }
+  // static updateLocationTest(){
+  //   RNVeery.updateLocation();
+  // }
   static requestRouteMatch(){
     RNVeery.requestRouteMatch();
   }
@@ -308,6 +308,16 @@ class Veery {
   static unsetTags(tagName){
     RNVeery.unsetTags(tagName);
   }
+  static resetLocalHistory(){
+    RNVeery.resetLocalHistory();
+  }
+  static resetBackendHistory(){
+    RNVeery.resetBackendHistory();
+  }
+  static resetGeoProfileHistory(){
+    RNVeery.resetGeoProfileHistory();
+  }
+
 }
 //export {Veery};
 module.exports = Veery;

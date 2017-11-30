@@ -114,24 +114,24 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
 
      if (location != null) {
        final WritableMap map = new WritableNativeMap();
-       map.putDouble("Accuracy", location.getAccuracy());
-       map.putDouble("Altitude", location.getAltitude());
-       map.putDouble("Bearing", location.getBearing());
-       map.putDouble("ElapsedRealtimeNanos", location.getElapsedRealtimeNanos());
-       map.putDouble("Latitude", location.getLatitude());
-       map.putDouble("Longitude", location.getLongitude());
-       map.putString("Provider", location.getProvider());
-       map.putDouble("Speed", location.getSpeed());
-       map.putDouble("Time", location.getTime());
+       map.putDouble("accuracy", location.getAccuracy());
+       map.putDouble("altitude", location.getAltitude());
+       map.putDouble("bearing", location.getBearing());
+       map.putDouble("elapsedRealtimeNanos", location.getElapsedRealtimeNanos());
+       map.putDouble("latitude", location.getLatitude());
+       map.putDouble("longitude", location.getLongitude());
+       map.putString("provider", location.getProvider());
+       map.putDouble("speed", location.getSpeed());
+       map.putDouble("time", location.getTime());
        //Log.i(REACT_CLASS,"count = " +veery.countLocationHistory(1,null,null)+ ", Location = " + map.toString());
        position.invoke(map);
      }
    }
   }
   @ReactMethod
-  public void getCurrentLocationAge(){
+  public void getCurrentLocationAge(Callback age){
    if(ifVeery())
-    veery.getCurrentLocationAge();
+    age.invoke((int)veery.getCurrentLocationAge());
   }
 
   @ReactMethod
@@ -243,15 +243,15 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
 
     if (mRequestLocation) {
       final WritableMap map = new WritableNativeMap();
-      map.putDouble("Accuracy", location.getAccuracy());
-      map.putDouble("Altitude", location.getAltitude());
-      map.putDouble("Bearing", location.getBearing());
-      map.putDouble("ElapsedRealtimeNanos", location.getElapsedRealtimeNanos());
-      map.putDouble("Latitude", location.getLatitude());
-      map.putDouble("Longitude", location.getLongitude());
-      map.putString("Provider", location.getProvider());
-      map.putDouble("Speed", location.getSpeed());
-      map.putDouble("Time", location.getTime());
+      map.putDouble("accuracy", location.getAccuracy());
+      map.putDouble("altitude", location.getAltitude());
+      map.putDouble("bearing", location.getBearing());
+      map.putDouble("elapsedRealtimeNanos", location.getElapsedRealtimeNanos());
+      map.putDouble("latitude", location.getLatitude());
+      map.putDouble("longitude", location.getLongitude());
+      map.putString("provider", location.getProvider());
+      map.putDouble("speed", location.getSpeed());
+      map.putDouble("time", location.getTime());
       map.putDouble("age", l);
       //Log.i(REACT_CLASS, "LocationUpdate = " + map.toString());
       emitDeviceEvent("LocationUpdate", map);
@@ -334,15 +334,15 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
      if (locations != null)
        for (int i = 0; i < locations.length; i++) {
          final WritableMap map1 = new WritableNativeMap();
-         map1.putDouble("Accuracy", locations[i].getAccuracy());
-         map1.putDouble("Altitude", locations[i].getAltitude());
-         map1.putDouble("Bearing", locations[i].getBearing());
-         map1.putDouble("ElapsedRealtimeNanos", locations[i].getElapsedRealtimeNanos());
-         map1.putDouble("Latitude", locations[i].getLatitude());
-         map1.putDouble("Longitude", locations[i].getLongitude());
-         map1.putString("Provider", locations[i].getProvider());
-         map1.putDouble("Speed", locations[i].getSpeed());
-         map1.putDouble("Time", locations[i].getTime());
+         map1.putDouble("accuracy", locations[i].getAccuracy());
+         map1.putDouble("altitude", locations[i].getAltitude());
+         map1.putDouble("bearing", locations[i].getBearing());
+         map1.putDouble("elapsedRealtimeNanos", locations[i].getElapsedRealtimeNanos());
+         map1.putDouble("latitude", locations[i].getLatitude());
+         map1.putDouble("longitude", locations[i].getLongitude());
+         map1.putString("provider", locations[i].getProvider());
+         map1.putDouble("speed", locations[i].getSpeed());
+         map1.putDouble("time", locations[i].getTime());
          //Log.i(REACT_CLASS,"mLocations["+i+"] = "+ map1);
          maps.pushMap(map1);
        }
@@ -446,13 +446,13 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
 
       WritableArray tolocations = new WritableNativeArray();
       Location[] locations = predictions.toLocations();
-
-      for (int i = 0; i < locations.length; i++) {
-        WritableMap location = new WritableNativeMap();
-        location.putDouble("longitude", locations[i].getLongitude());
-        location.putDouble("latitude", locations[i].getLatitude());
-        tolocations.pushMap(location);
-      }
+      if (locations != null)
+        for (int i = 0; i < locations.length; i++) {
+          WritableMap location = new WritableNativeMap();
+          location.putDouble("longitude", locations[i].getLongitude());
+          location.putDouble("latitude", locations[i].getLatitude());
+          tolocations.pushMap(location);
+        }
 
       map.putArray("toLocations", tolocations);
       // Predictions.getStartTrip()
