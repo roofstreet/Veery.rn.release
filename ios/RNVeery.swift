@@ -206,6 +206,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
     // MARK: - veeryRouteMatch
     func veeryRouteMatch(_ veery: Veery, locationsHistory: Veery.LocationsHistory) {
         self.bridge.eventDispatcher().sendAppEvent(withName: "RouteMatch", body: veeryLocationsToNSDictionary(locations: locationsHistory, format: Veery.HISTORY_ROUTEMATCH))
+    
     }
     
     // MARK: - veeryPoiUpdate
@@ -314,6 +315,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         var _prediction : [String : Any] = [:]
         
         _prediction["isOK"] = predictions.isOk() as Bool
+        _prediction["isOutdated"] = predictions.isOutdated() as Bool
         _prediction["probability"] = predictions.getProbability() as Double
         _prediction["DestinationLongitude"] = predictions.getNextDestination()?.coordinate.longitude
         _prediction["DestinationLatitude"] = predictions.getNextDestination()?.coordinate.latitude

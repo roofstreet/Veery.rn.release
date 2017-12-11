@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3E85DE8D1FBC8F8B009C03F6 /* RNVeery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E85DE8C1FBC8F8B009C03F6 /* RNVeery.swift */; };
+		3EF5C04D1FD69803008F073C /* ReferenceProxy in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E85DE6C1FBC8D0A009C03F6 /* libReact.a */; };
+		7806B3B327BFF09E5FE9B188 /* libPods-RNVeery.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F35F2308225FD3A1F697D4 /* libPods-RNVeery.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RNVeery.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNVeery.m */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +142,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EF5C04D1FD69803008F073C /* ReferenceProxy in Frameworks */,
+				7806B3B327BFF09E5FE9B188 /* libPods-RNVeery.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

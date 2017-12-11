@@ -1,12 +1,12 @@
 PODS:
-  - Veery (1.0.4)
+  - Veery (1.0.5)
 
 DEPENDENCIES:
-  - Veery (= 1.0.4)
+  - Veery (= 1.0.5)
 
 SPEC CHECKSUMS:
-  Veery: 866924ff04a3fc990d39f7b7dbbb66d4d9bb736c
+  Veery: ec983caf31c850994fd4e46034d1d8bd1ba89e6f
 
-PODFILE CHECKSUM: ff080540592e963f830edb6d2ae8918eb1b1d0f1
+PODFILE CHECKSUM: 1576daf88cf9c3df976a5eb42eb03bfefe0966e9
 
 COCOAPODS: 1.2.0
