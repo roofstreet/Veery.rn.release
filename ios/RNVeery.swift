@@ -305,7 +305,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         for i in 0..<pois.count(){
             getWeight.insert(pois.getWeight(index: i), at: i)
         }
-        pointsOfIntersets["getWieght"] = getWeight as NSArray
+        pointsOfIntersets["getWeight"] = getWeight as NSArray
         return pointsOfIntersets as NSDictionary
     }
     
