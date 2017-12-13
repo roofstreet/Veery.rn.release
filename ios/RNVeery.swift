@@ -299,7 +299,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
             let geojson = String(data : obj,encoding: .utf8)
             toGeoJsonArray.append(geojson!)
         }
-        pointsOfIntersets["toGeoJsonArray"] = toGeoJsonArray as NSArray
+        pointsOfIntersets["toGeoJSONArray"] = toGeoJsonArray as NSArray
         pointsOfIntersets["count"] = pois.count() as NSInteger
         var getWeight : [Double] = []
         for i in 0..<pois.count(){
