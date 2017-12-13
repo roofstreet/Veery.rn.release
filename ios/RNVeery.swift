@@ -244,7 +244,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         
         var toGEOJSON_LINESTRING = ""
         var toGEOJSON_MULTIPOINT = ""
-        var toGeoJsonArray : NSArray = []
+        var toGeoJsonArray : [String] = []
         if format == Veery.HISTORY_RAW {
             toGEOJSON_LINESTRING = String(data: locations.toGeoJSON(geometry: Veery.GEOJSON_LINESTRING)!, encoding: .utf8)!
             toGEOJSON_MULTIPOINT = String(data: locations.toGeoJSON(geometry: Veery.GEOJSON_MULTIPOINT)!, encoding: .utf8)!
@@ -253,7 +253,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
             let object = locations.toGeoJSONArray()
             for obj in object{
                 let geojson = String(data : obj,encoding: .utf8)
-                toGeoJsonArray.adding(geojson)//append(geojson!)
+                toGeoJsonArray.append(geojson!)
             }
             
         }
