@@ -1,0 +1,20 @@
+{
+  "name": "Veery",
+  "version": "1.0.5",
+  "summary": "An advanced geolocalisation API for iOS",
+  "description": "The easy-to-use Veery API provides basic geolocalization services advanced location services, e.g., future location prediction",
+  "homepage": "http://roofstreet.com",
+  "license": "Roofstreet",
+  "authors": {
+    "A.D. Nguyen": "adnguyen@roofstreet.io",
+    "Malek Hassani": "malek@roofstreet.io"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/roofstreet/Veery.ios.release.git",
+    "tag": "v1.0.5"
+  },
+  "vendored_frameworks": "Veery.framework"
+}
