@@ -12,9 +12,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0C948D91CEBFAA3548CF465525E205B3 /* Veery.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Veery.framework; sourceTree = "<group>"; };
 		4AE57B0CD8F8CCE521C1F99ED86056DE /* Pods-RNVeery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RNVeery.debug.xcconfig"; sourceTree = "<group>"; };
 		4CE0B35C28A64AFECF227B82FED9AFA7 /* Pods-RNVeery-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RNVeery-dummy.m"; sourceTree = "<group>"; };
+		514001271E18C10AF03643E2D7A632D5 /* Veery.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Veery.framework; sourceTree = "<group>"; };
 		56B4198FFFB0DB4C08B6E08A266170D8 /* Pods-RNVeery-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RNVeery-frameworks.sh"; sourceTree = "<group>"; };
 		575611FF51DC9441BDB9F10D67B53284 /* Pods-RNVeery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RNVeery.release.xcconfig"; sourceTree = "<group>"; };
 		7628311C3C3E840DB08B99C6CA832435 /* Pods-RNVeery-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RNVeery-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -45,14 +45,6 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		6FBA9581814660151930FF72FF821DAA /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				BB843893305F5BDCB3915928974A0AC5 /* Veery */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
 		72EEE1466E485659FD42AC8B30947817 /* Pods-RNVeery */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,21 +72,28 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				6FBA9581814660151930FF72FF821DAA /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				A4AF293F8DD209F3B28FD8E1F41A6D83 /* Pods */,
 				EE632D76F006837EED338F844934D81A /* Products */,
 				3006F5AB64913FB87E91D8C5D204FD75 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		BB843893305F5BDCB3915928974A0AC5 /* Veery */ = {
+		A4AF293F8DD209F3B28FD8E1F41A6D83 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E09E5BB8A96F277400B7E873A1EFDE95 /* Frameworks */,
+				C1545A4F3557301F28C2E02EFFFE3E31 /* Veery */,
 			);
-			name = Veery;
-			path = /Users/malekhassani/Desktop/Veery.framework.Debug;
-			sourceTree = "<absolute>";
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B7DF9403CAC9A00DD4A912979BCDE8FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				514001271E18C10AF03643E2D7A632D5 /* Veery.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
@@ -104,12 +103,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E09E5BB8A96F277400B7E873A1EFDE95 /* Frameworks */ = {
+		C1545A4F3557301F28C2E02EFFFE3E31 /* Veery */ = {
 			isa = PBXGroup;
 			children = (
-				0C948D91CEBFAA3548CF465525E205B3 /* Veery.framework */,
+				B7DF9403CAC9A00DD4A912979BCDE8FE /* Frameworks */,
 			);
-			name = Frameworks;
+			name = Veery;
+			path = Veery;
 			sourceTree = "<group>";
 		};
 		EE632D76F006837EED338F844934D81A /* Products */ = {

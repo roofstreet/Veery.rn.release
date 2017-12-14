@@ -255,7 +255,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
                 let geojson = String(data : obj,encoding: .utf8)
                 toGeoJsonArray.append(geojson!)
             }
-            
+        
         }
         let boundingbox = locations.getBoundingBox()!
         let northest : CLLocationCoordinate2D = boundingbox[1]

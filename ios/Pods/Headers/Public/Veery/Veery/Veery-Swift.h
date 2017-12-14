@@ -1,1 +1,1 @@
-../../../../../../../../../Veery.framework.Debug/Veery.framework/Headers/Veery-Swift.h
+../../../../Veery/Veery.framework/Headers/Veery-Swift.h

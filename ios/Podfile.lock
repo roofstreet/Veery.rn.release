@@ -2,15 +2,11 @@ PODS:
   - Veery (1.0.5)
 
 DEPENDENCIES:
-  - Veery (from `~/Desktop/Veery.framework.Debug/`)
-
-EXTERNAL SOURCES:
-  Veery:
-    :path: ~/Desktop/Veery.framework.Debug/
+  - Veery (= 1.0.5)
 
 SPEC CHECKSUMS:
-  Veery: baf4b473bcef518d057df8182ab1a1f8b9379f7a
+  Veery: ec983caf31c850994fd4e46034d1d8bd1ba89e6f
 
-PODFILE CHECKSUM: 9e886a3b01e2fd174e70bcef5e6cfedc92dd7be8
+PODFILE CHECKSUM: 22a62541a878ee9ca2a1c577c620ddfa35d8650f
 
 COCOAPODS: 1.2.0
