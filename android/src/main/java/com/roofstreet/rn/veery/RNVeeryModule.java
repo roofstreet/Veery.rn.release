@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package com.roofstreet.rn.veery;
 
 import android.location.Location;
 import android.support.annotation.Nullable;

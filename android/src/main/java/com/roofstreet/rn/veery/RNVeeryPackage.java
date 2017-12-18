@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package com.roofstreet.rn.veery;
 
 import java.util.Arrays;
 import java.util.Collections;
