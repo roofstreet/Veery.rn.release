@@ -5,6 +5,7 @@ import android.location.Location;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -20,7 +21,7 @@ import org.json.JSONObject;
 
 import java.util.Calendar;
 
-public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.LocationUpdate ,Veery.RouteMatch,Veery.PoiUpdate, Veery.PredictionUpdate{
+public class RNVeeryModule extends ReactContextBaseJavaModule implements LifecycleEventListener, Veery.LocationUpdate ,Veery.RouteMatch,Veery.PoiUpdate, Veery.PredictionUpdate{
   public static final String REACT_CLASS = "RNVeery";
   public static final int DEACTIVATE_ALL = Veery.DEACTIVATE_ALL;
   public static final int FOREGROUND = Veery.FOREGROUND;
@@ -40,6 +41,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
   public RNVeeryModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
+    reactContext.addLifecycleEventListener(this);
   }
 
   @Override
@@ -254,7 +256,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
       map.putDouble("time", location.getTime());
       map.putDouble("age", l);
       //Log.i(REACT_CLASS, "LocationUpdate = " + map.toString());
-      emitDeviceEvent("LocationUpdate", map);
+      emitDeviceEvent("veeryLocationUpdate", map);
     }
   }
 
@@ -262,21 +264,21 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
   public void onRouteMatch(Veery.Locations locations) {
    if(ifVeery())
     if (mRequestRouteMatch){
-      emitDeviceEvent("RouteMatch",veeryLocationsToWritableMap(locations,Veery.HISTORY_ROUTEMATCH));
+      emitDeviceEvent("veeryRouteMatch",veeryLocationsToWritableMap(locations,Veery.HISTORY_ROUTEMATCH));
     }
   }
 
   @Override
   public void onPoiUpdate(Veery.Pois pois) {
     if (mRequestPoiUpdate){
-      emitDeviceEvent("PoisUpdate",poisToWritableMap(pois));
+      emitDeviceEvent("veeryPoisUpdate",poisToWritableMap(pois));
     }
   }
 
   @Override
   public void onPredictionUpdate(Veery.Predictions predictions) {
     if (mRequestPrediction)
-      emitDeviceEvent("PredictionUpdate",predictionsToWritableMap(predictions));
+      emitDeviceEvent("veeryPredictionUpdate",predictionsToWritableMap(predictions));
   }
   //---------------------Subscribes and Tags----------------------------------
   @ReactMethod
@@ -506,4 +508,27 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Veery.L
     return s;
   }
 
+  @Override
+  public void onHostResume() {
+    if (veery!= null){
+      Log.i(REACT_CLASS,"-----onHostResume---");
+      veery.serviceResume();
+    }
+  }
+
+  @Override
+  public void onHostPause() {
+    if (veery != null){
+      Log.i(REACT_CLASS,"-----onHostPause---");
+      veery.servicePause();
+    }
+  }
+
+  @Override
+  public void onHostDestroy() {
+    if (veery != null){
+      Log.i(REACT_CLASS,"-----onHostDestroy---");
+      veery.serviceDisconnect();
+    }
+  }
 }

@@ -201,22 +201,22 @@ class RNVeery : RCTViewManager , VeeryDelegate{
             "verticalAccuracy" : loc.verticalAccuracy as Double,
             "timestamp" : loc.timestamp.description as NSString
             ] as NSDictionary
-        self.bridge.eventDispatcher().sendAppEvent(withName: "LocationUpdate", body: location)
+        self.bridge.eventDispatcher().sendAppEvent(withName: "veeryLocationUpdate", body: location)
     }
     // MARK: - veeryRouteMatch
     func veeryRouteMatch(_ veery: Veery, locationsHistory: Veery.LocationsHistory) {
-        self.bridge.eventDispatcher().sendAppEvent(withName: "RouteMatch", body: veeryLocationsToNSDictionary(locations: locationsHistory, format: Veery.HISTORY_ROUTEMATCH))
+        self.bridge.eventDispatcher().sendAppEvent(withName: "veeryRouteMatch", body: veeryLocationsToNSDictionary(locations: locationsHistory, format: Veery.HISTORY_ROUTEMATCH))
     
     }
     
     // MARK: - veeryPoiUpdate
     func veeryPoiUpdate(_ veery: Veery, poi: Veery.Pois) {
-        self.bridge.eventDispatcher().sendAppEvent(withName: "PoisUpdate", body: poisToNSDictionary(pois: poi))
+        self.bridge.eventDispatcher().sendAppEvent(withName: "veeryPoisUpdate", body: poisToNSDictionary(pois: poi))
     }
     
     
     func veeryPredictionUpdate(_ veery: Veery, Predictions: Veery.Predictions) {
-        self.bridge.eventDispatcher().sendAppEvent(withName: "PredictionUpdate", body: predictionToNSDictionary(predictions: Predictions))
+        self.bridge.eventDispatcher().sendAppEvent(withName: "veeryPredictionUpdate", body: predictionToNSDictionary(predictions: Predictions))
     }
     
     
