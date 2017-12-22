@@ -1,7 +1,9 @@
 
 package com.roofstreet.rn.veery;
 
+import android.annotation.TargetApi;
 import android.location.Location;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -240,6 +242,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   //-----------------CallBack---------------------------
 
 
+  @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
   @Override
   public void onLocationUpdate(Location location, long l) {
 
