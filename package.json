@@ -1,6 +1,6 @@
 {
   "name": "react-native-veery",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/roofstreet/Veery.rn.release.git"
@@ -19,7 +19,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "react": "16.0.0",
-    "react-native": "0.51.0"
+    "react": "^15.4.2",
+    "react-native": "^0.41.2"
   }
 }

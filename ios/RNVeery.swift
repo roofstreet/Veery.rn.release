@@ -175,6 +175,11 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         veery.unsetTags(name: tagName  as String)
     }
     
+    // MARK: - Get Status
+    @objc func getStatus(callback : RCTResponseSenderBlock) -> Void{
+        callback([veery.getStatus()])
+    }
+    
     // MARK: - RESET
     @objc func resetLocalHistory(){
         veery.resetLocalHistory()
@@ -319,8 +324,16 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         _prediction["probability"] = predictions.getProbability() as Double
         _prediction["DestinationLongitude"] = predictions.getNextDestination()?.coordinate.longitude
         _prediction["DestinationLatitude"] = predictions.getNextDestination()?.coordinate.latitude
-        _prediction["Trip"] = predictions.toGeoJson()?.description
-        _prediction["toGeoJSON"] = predictions.toGeoJson()?.description
+        if let geojs = predictions.toGeoJson(){
+            do {
+                let data = try JSONSerialization.data(withJSONObject: geojs, options: [])
+                _prediction["Trip"] = String(data: data, encoding: .utf8)!
+                _prediction["toGeoJSON"] = String(data: data, encoding: .utf8)!
+                
+            } catch let error as NSError {
+                NSLog("Failed to load GEOJSON: \(error.localizedDescription)")
+            }
+        }
         var tolocations : [NSDictionary] = []
         for loc in predictions.toLocationCoordinate2D()! {
             let location = ["longitude" : loc.longitude,"latitude" : loc.latitude]

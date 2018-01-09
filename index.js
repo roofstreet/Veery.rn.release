@@ -71,6 +71,14 @@ class Veery {
   static stopLocationUpdate(){
     RNVeery.stopLocationUpdate();
   }
+  //-------------------------Get Status--------------------------------------
+  static getStatus(callback){
+    RNVeery.getStatus{
+      (status) => {
+        callback(status);
+      }
+    }
+  }
 //-------------------------Pois-------------------------------------
   static getPois(callback){
     RNVeery.getPois(

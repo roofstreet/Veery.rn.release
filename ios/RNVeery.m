@@ -77,4 +77,6 @@ RCT_EXTERN_METHOD(resetGeoProfileHistory)
 RCT_EXTERN_METHOD(setVeeryToken:(NSString *)token)
 RCT_EXTERN_METHOD(VeeryNotificationHandler:(NSDictionary *)data : (RCTResponseSenderBlock)callback)
 
+RCT_EXTERN_METHOD(getStatus: (RCTResponseSenderBlock *)callback)
+
 @end

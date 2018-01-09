@@ -121,7 +121,9 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
        map.putDouble("accuracy", location.getAccuracy());
        map.putDouble("altitude", location.getAltitude());
        map.putDouble("bearing", location.getBearing());
-       map.putDouble("elapsedRealtimeNanos", location.getElapsedRealtimeNanos());
+       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+         map.putDouble("elapsedRealtimeNanos", location.getElapsedRealtimeNanos());
+       }
        map.putDouble("latitude", location.getLatitude());
        map.putDouble("longitude", location.getLongitude());
        map.putString("provider", location.getProvider());
@@ -242,7 +244,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   //-----------------CallBack---------------------------
 
 
-  @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+
   @Override
   public void onLocationUpdate(Location location, long l) {
 
@@ -251,7 +253,9 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
       map.putDouble("accuracy", location.getAccuracy());
       map.putDouble("altitude", location.getAltitude());
       map.putDouble("bearing", location.getBearing());
-      map.putDouble("elapsedRealtimeNanos", location.getElapsedRealtimeNanos());
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+        map.putDouble("elapsedRealtimeNanos", location.getElapsedRealtimeNanos());
+      }
       map.putDouble("latitude", location.getLatitude());
       map.putDouble("longitude", location.getLongitude());
       map.putString("provider", location.getProvider());
@@ -311,6 +315,12 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
    if(ifVeery())
       veery.unsetTags(tagName);
   }
+  //-----------------------------Get Status-----------------------------------
+  @ReactMethod
+  public void getStatus(Callback callback){
+    if (ifVeery())
+      callback.invoke(veery.getStatus());
+  }
   //---------------------------RESET DATA----------------------------
   @ReactMethod
   public void resetLocalHistory(){
@@ -342,7 +352,9 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
          map1.putDouble("accuracy", locations[i].getAccuracy());
          map1.putDouble("altitude", locations[i].getAltitude());
          map1.putDouble("bearing", locations[i].getBearing());
-         map1.putDouble("elapsedRealtimeNanos", locations[i].getElapsedRealtimeNanos());
+         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+           map1.putDouble("elapsedRealtimeNanos", locations[i].getElapsedRealtimeNanos());
+         }
          map1.putDouble("latitude", locations[i].getLatitude());
          map1.putDouble("longitude", locations[i].getLongitude());
          map1.putString("provider", locations[i].getProvider());
