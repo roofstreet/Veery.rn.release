@@ -176,7 +176,8 @@ class RNVeery : RCTViewManager , VeeryDelegate{
     }
     
     // MARK: - Get Status
-    @objc func getStatus(callback : RCTResponseSenderBlock) -> Void{
+    @objc (getStatus:)
+    func getStatus(callback : RCTResponseSenderBlock) -> Void{
         callback([veery.getStatus()])
     }
     
@@ -217,6 +218,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
     // MARK: - veeryPoiUpdate
     func veeryPoiUpdate(_ veery: Veery, poi: Veery.Pois) {
         self.bridge.eventDispatcher().sendAppEvent(withName: "veeryPoisUpdate", body: poisToNSDictionary(pois: poi))
+        
     }
     
     
