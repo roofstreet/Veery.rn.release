@@ -73,11 +73,11 @@ class Veery {
   }
   //-------------------------Get Status--------------------------------------
   static getStatus(callback){
-    RNVeery.getStatus{
+    RNVeery.getStatus(
       (status) => {
         callback(status);
       }
-    }
+    )
   }
 //-------------------------Pois-------------------------------------
   static getPois(callback){
