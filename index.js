@@ -265,7 +265,7 @@ class Veery {
       let from = notification.messageFrom;
       //console.log("VeeryNotificationHandler --Android--messagefrom :",from);
       if (from === "veery") {
-        callback(true);
+        
         if (notification.subscription !== undefined) {
           let sub = notification.subscription;
           //console.log("VeeryNotificationHandler --Android--sub :",sub);
@@ -294,6 +294,7 @@ class Veery {
             }
           }
         }
+        callback(true);
       }else {
         callback(false);
       }
