@@ -290,6 +290,7 @@ class Veery {
                 RNVeery.VeeryNotificationHandler(sub,0);
                 break;
               default:
+                RNVeery.VeeryNotificationHandler(sub,0);
                 break;
             }
           }
