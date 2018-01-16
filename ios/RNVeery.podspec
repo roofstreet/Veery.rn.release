@@ -10,11 +10,11 @@ Pod::Spec.new do |s|
   s.summary         = "A Veery bridge for react-native"
   s.license         = "MIT"
   s.author          = { "Malek Hassani" => "malek@roofstreet.io" }
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
   s.source          = { :git => "https://github.com/roofstreet/Veery.rn.release.git", :tag => "master" }
   s.source_files    = 'RNVeery/**/*.{h,m}'
   s.preserve_paths  = "**/*.js"
 
-  s.dependency 'Veery', '1.2.1'
+  s.dependency 'Veery', '1.2.2'
 
 end
