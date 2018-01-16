@@ -36,7 +36,18 @@
       compile project(':react-native-veery')
   	```
 
+## import veery Pod
+in your Podfile add the following :
 
+1. At the top
+`source 'https://github.com/roofstreet/cocoa.repo.git'`
+2. in Target
+        target 'yourAppName' do
+        # Pods for VeeryDemoReactNative
+        # TO DO : Add this line
+        pod 'RNVeery', :podspec => '../node_modules/react-native-veery/ios'
+
+end
 ## Usage
 ```javascript
 import Veery from 'react-native-veery';

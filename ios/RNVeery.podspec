@@ -1,24 +1,20 @@
 
+  require 'json'
+version = JSON.parse(File.read('../package.json'))["version"]
+
 Pod::Spec.new do |s|
-  s.name         = "RNVeery"
-  s.version      = "1.0.0"
-  s.summary      = "RNVeery"
-  s.description  = <<-DESC
-                  RNVeery
-                   DESC
-  s.homepage     = ""
-  s.license      = "MIT"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-  s.author             = { "author" => "author@domain.cn" }
-  s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/author/RNVeery.git", :tag => "master" }
-  s.source_files  = "RNVeery/**/*.{h,m}"
-  s.requires_arc = true
 
+  s.name            = "RNVeery"
+  s.version         = version
+  s.homepage        = "https://github.com/roofstreet/Veery.rn.release"
+  s.summary         = "A Veery bridge for react-native"
+  s.license         = "MIT"
+  s.author          = { "Malek Hassani" => "malek@roofstreet.io" }
+  s.ios.deployment_target = '9.0'
+  s.source          = { :git => "https://github.com/roofstreet/Veery.rn.release.git", :tag => "master" }
+  s.source_files    = 'RNVeery/**/*.{h,m}'
+  s.preserve_paths  = "**/*.js"
 
-  s.dependency "React"
-  #s.dependency "others"
+  s.dependency 'Veery', '~> 1.0'
 
 end
-
-  
