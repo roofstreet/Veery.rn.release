@@ -47,8 +47,8 @@ in your Podfile add the following :
         # Pods for VeeryDemoReactNative
         # TO DO : Add this line
         pod 'RNVeery', :podspec => '../node_modules/react-native-veery/ios'
-
-end
+        
+        end
 ## Usage
 ```javascript
 import Veery from 'react-native-veery';

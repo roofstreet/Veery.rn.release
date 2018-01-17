@@ -253,7 +253,9 @@ class Veery {
   // Subscribes and Tags
 
   static setVeeryToken(token){
-    RNVeery.setVeeryToken(token);
+    if (token !== null && token !== undefined) {
+      RNVeery.setVeeryToken(token);
+    }
   }
   static VeeryNotificationHandler(notification, callback){
     if (Platform.OS === 'ios' ) {
