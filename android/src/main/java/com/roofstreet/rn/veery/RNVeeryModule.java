@@ -60,9 +60,14 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   @ReactMethod
   public void serviceConnect(){
 
-   if(ifVeery())
+    if(veery != null) {
+      veery.serviceConnect();
+    }else {
+      ifVeery();
+    }
     Log.i("RNVeery","ServiceConnect");
   }
+
   @ReactMethod
   public void serviceDisconnect(){
    if(ifVeery())
@@ -543,7 +548,11 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   public void onHostDestroy() {
     if (veery != null){
       Log.i(REACT_CLASS,"-----onHostDestroy---");
-      veery.serviceDisconnect();
+      try {
+        veery.serviceDisconnect();
+      }catch (Throwable t){
+        ////
+      }
     }
   }
 }

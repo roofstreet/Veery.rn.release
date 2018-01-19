@@ -312,13 +312,19 @@ class Veery {
     RNVeery.unregisterNotification(subscription);
   }
   static setTags(tagName,value){
-    RNVeery.setTags(tagName,value);
+    if (tagName !== null && tagName !== undefined && value !== null && value !== undefined) {
+      RNVeery.setTags(tagName,value);
+    }
   }
   static getTags(tagName){
-    RNVeery.getTags(tagName);
+    if (tagName !== null && tagName !== undefined ){
+      RNVeery.getTags(tagName);
+    }
   }
   static unsetTags(tagName){
-    RNVeery.unsetTags(tagName);
+    if (tagName !== null && tagName !== undefined ){
+      RNVeery.unsetTags(tagName);
+    }
   }
   static resetLocalHistory(){
     RNVeery.resetLocalHistory();
