@@ -66,6 +66,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
       ifVeery();
     }
     Log.i("RNVeery","ServiceConnect");
+
   }
 
   @ReactMethod
@@ -341,6 +342,33 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   public void resetGeoProfileHistory(){
    if(ifVeery())
       veery.resetGeoProfileHistory();
+  }
+  //--------------------------------------------------------
+  @ReactMethod
+  public void systemAuthorization(int autho,Callback callback){
+    if (ifVeery())
+      callback.invoke(veery.systemAuthorization(autho));
+
+
+  }
+
+  @ReactMethod
+  public void userAgreement(Callback callback){
+    if (ifVeery())
+      callback.invoke(veery.userAgreement());
+  }
+
+  @ReactMethod
+  public void userAgreementAge(Callback callback){
+    if (ifVeery())
+      callback.invoke(new Double(veery.userAgreementAge()));
+  }
+
+  @ReactMethod
+  public void userAgreedPurpose(int PurposeVersion,String PurposeText,String approvalButtonText, String rejectionButtonText, Boolean agreed){
+
+    if (ifVeery())
+      veery.userAgreedPurpose(PurposeVersion,PurposeText,approvalButtonText,rejectionButtonText,agreed);
   }
   //--------------------------Outils-------------------------
   private WritableMap veeryLocationsToWritableMap (Veery.Locations mLocations, int format){

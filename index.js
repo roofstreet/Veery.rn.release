@@ -22,6 +22,10 @@ class Veery {
   static  NOTIF_POI = "poi";
   static  NOTIF_PREDICTION = "prediction";
 
+  static  USER_AUTH_GEOLOC = 1;
+  static  USER_AUTH_GEOLOC_BACKGROUND  = 2;
+  static  USER_AUTH_NOTIFICATION  = 4;
+
   static serviceConnect(){
     RNVeery.serviceConnect();
   }
@@ -335,6 +339,36 @@ class Veery {
   static resetGeoProfileHistory(){
     RNVeery.resetGeoProfileHistory();
   }
+
+  //-------------------------------------------------------------------------------------------------------
+ 
+  //--------------systemAuthorization---------------
+  static systemAuthorization(autho  ,callback){
+      RNVeery.systemAuthorization(autho,(call) => {
+        callback(call);
+      })
+  }
+
+//----------------userAgreement---------------------------
+static userAgreement(callback){
+  RNVeery.userAgreement((call) => { 
+    callback(call);
+  })
+}
+
+//------------------userAgreementAge----------------------------------
+static userAgreementAge(callback){
+  RNVeery.userAgreementAge((call) => { 
+    callback(call);
+  })
+}
+
+//---------------------userAgreedPurpose----------------------------------------
+static userAgreedPurpose(PurposeVersion,PurposeText,approvalButtonText,rejectionButtonText,Agreed){
+  RNVeery.userAgreedPurpose(PurposeVersion,PurposeText,approvalButtonText,rejectionButtonText,Agreed);
+}
+
+//-------------------------------------------------------------------------------------------------------
 
 }
 //export {Veery};

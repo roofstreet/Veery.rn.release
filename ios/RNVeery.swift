@@ -181,6 +181,25 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         callback([veery.getStatus()])
     }
     
+    // MARK: - System Authorization
+    @objc func systemAuthorization(_ autho : NSInteger, _ callback : RCTResponseSenderBlock)-> Void{
+        callback([veery.systemAuthorization(autho)])
+    }
+    // MARK: - User Agreement
+    @objc (userAgreement:)
+    func userAgreement(callback : RCTResponseSenderBlock)-> Void{
+        callback([veery.userAgreement()])
+    }
+    // MARK: - User Agreement Age
+    @objc (userAgreementAge:)
+    func userAgreementAge(callback : RCTResponseSenderBlock)-> Void{
+        callback([veery.userAgreementAge()])
+    }
+    // MARK: - User Agreed Purpose
+    @objc func userAgreedPurpose(_ PurposeVersion : NSInteger, _ PurposeText : NSString, _ ApprovalButtonText : NSString, _ RejectionButtonText : NSString, _ Agreed : Bool)-> Void{
+        veery.userAgreedPurpose(PurposeVersion: PurposeVersion, PurposeText: PurposeText as String, ApprovalButtonText: ApprovalButtonText as String, RejectionButtonText: RejectionButtonText as String, Agreed: Agreed)
+    }
+    
     // MARK: - RESET
     @objc func resetLocalHistory(){
         veery.resetLocalHistory()

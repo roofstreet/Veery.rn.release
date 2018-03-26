@@ -172,8 +172,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # define SWIFT_DEPRECATED_OBJC(Msg) SWIFT_DEPRECATED_MSG(Msg)
 #endif
 #if __has_feature(modules)
-@import ObjectiveC;
+@import CoreData;
 @import Foundation;
+@import ObjectiveC;
 @import CoreLocation;
 #endif
 
@@ -186,6 +187,47 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Wnullability"
 
 SWIFT_MODULE_NAMESPACE_PUSH("Veery")
+@class NSEntityDescription;
+@class NSManagedObjectContext;
+
+SWIFT_CLASS("_TtC5Veery8NextTrip")
+@interface NextTrip : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSNumber;
+
+@interface NextTrip (SWIFT_EXTENSION(Veery))
+@property (nonatomic, copy) NSString * _Nullable arrival_name;
+@property (nonatomic, copy) NSDate * _Nullable arrival_time;
+@property (nonatomic, copy) NSString * _Nullable destination_json;
+@property (nonatomic, strong) NSNumber * _Nullable destination_lat;
+@property (nonatomic, strong) NSNumber * _Nullable destination_lon;
+@property (nonatomic, strong) NSNumber * _Nullable duration;
+@property (nonatomic, strong) NSNumber * _Nullable ok;
+@property (nonatomic, strong) NSNumber * _Nullable prediction_id;
+@property (nonatomic, strong) NSNumber * _Nullable probability;
+@property (nonatomic, copy) NSString * _Nullable route_json;
+@property (nonatomic, copy) NSString * _Nullable start_name;
+@property (nonatomic, copy) NSDate * _Nullable start_time;
+@end
+
+
+SWIFT_CLASS("_TtC5Veery4Tags")
+@interface Tags : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface Tags (SWIFT_EXTENSION(Veery))
+@property (nonatomic, strong) NSNumber * _Nullable tag_id;
+@property (nonatomic, copy) NSString * _Nullable key;
+@property (nonatomic, copy) NSString * _Nullable value;
+@property (nonatomic, strong) NSNumber * _Nullable sent;
+@property (nonatomic, strong) NSNumber * _Nullable valid;
+@property (nonatomic, strong) NSNumber * _Nullable version;
+@end
+
 @protocol VeeryDelegate;
 @class CLLocation;
 @class LocationsHistory;
@@ -223,6 +265,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) NSInteger GEOPROFILE
 + (NSInteger)GEOPROFILE SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) NSInteger DEACTIVATE_ALL;)
 + (NSInteger)DEACTIVATE_ALL SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) NSInteger USER_AUTH_GEOLOC;)
++ (NSInteger)USER_AUTH_GEOLOC SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) NSInteger USER_AUTH_GEOLOC_BACKGROUND;)
++ (NSInteger)USER_AUTH_GEOLOC_BACKGROUND SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) NSInteger USER_AUTH_NOTIFICATION;)
++ (NSInteger)USER_AUTH_NOTIFICATION SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, strong) id <VeeryDelegate> _Nullable delegate;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (void)serviceConnect;
@@ -242,7 +290,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) NSInteger DEACTIVATE
 - (void)unregisterNotification:(NSString * _Nonnull)subscriptionType;
 - (void)setTagsWithName:(NSString * _Nonnull)name value:(NSString * _Nonnull)value;
 - (void)unsetTagsWithName:(NSString * _Nonnull)name;
-- (NSString * _Nonnull)getTagsWithName:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)getTagsWithName:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 /// <em>veery.activate()</em> : Request the Location Authorization
 - (void)activateWithService:(NSInteger)service;
 /// <h2>PS :</h2>
@@ -275,6 +323,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) NSInteger DEACTIVATE
 - (void)requestPoiUpdate;
 - (void)stopPoiUpdate;
 - (NSString * _Nonnull)getStatus SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)systemAuthorization:(NSInteger)autho SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)userAgreement SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)userAgreementAge SWIFT_WARN_UNUSED_RESULT;
+- (void)userAgreedPurposeWithPurposeVersion:(NSInteger)PurposeVersion PurposeText:(NSString * _Nonnull)PurposeText ApprovalButtonText:(NSString * _Nonnull)ApprovalButtonText RejectionButtonText:(NSString * _Nonnull)RejectionButtonText Agreed:(BOOL)Agreed;
 @end
 
 

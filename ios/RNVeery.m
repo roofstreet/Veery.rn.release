@@ -79,4 +79,9 @@ RCT_EXTERN_METHOD(VeeryNotificationHandler:(NSDictionary *)data : (RCTResponseSe
 
 RCT_EXTERN_METHOD(getStatus: (RCTResponseSenderBlock *)callback)
 
+RCT_EXTERN_METHOD(systemAuthorization: (NSInteger *)autho : (RCTResponseSenderBlock)callback)
+RCT_EXTERN_METHOD(userAgreement: (RCTResponseSenderBlock *)callback)
+RCT_EXTERN_METHOD(userAgreementAge: (RCTResponseSenderBlock *)callback)
+RCT_EXTERN_METHOD(userAgreedPurpose: (NSInteger *)PurposeVersion :(NSString *)PurposeText :(NSString *)ApprovalButtonText : (NSString *)RejectionButtonText : (BOOL *)Agreed )
+
 @end
