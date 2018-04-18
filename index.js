@@ -300,9 +300,12 @@ class Veery {
                 break;
             }
           }
+        }else{
+          RNVeery.VeeryNotificationHandler("wakeup",0);
         }
         callback(true);
       }else {
+        RNVeery.VeeryNotificationHandler("wakeup",0);
         callback(false);
       }
     }
