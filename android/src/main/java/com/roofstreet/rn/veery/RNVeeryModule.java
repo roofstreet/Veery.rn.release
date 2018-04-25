@@ -65,7 +65,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
     }else {
       ifVeery();
     }
-    Log.i("RNVeery","ServiceConnect");
+//    Log.i("RNVeery","ServiceConnect");
 
   }
 
@@ -91,13 +91,13 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   public void setApiKeySecret(String apiKeySecret){
    if(ifVeery())
     veery.setApiKeySecret(apiKeySecret);
-    Log.i(REACT_CLASS,"setApiKeySecret"+apiKeySecret);
+//    Log.i(REACT_CLASS,"setApiKeySecret"+apiKeySecret);
   }
   @ReactMethod
   public void activate(int level){
    if(ifVeery())
     veery.activate(level);
-    Log.i(REACT_CLASS,"activate "+level);
+//    Log.i(REACT_CLASS,"activate "+level);
   }
   @ReactMethod
   public void setVeeryToken(String token){
@@ -559,7 +559,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   @Override
   public void onHostResume() {
     if (veery!= null){
-      Log.i(REACT_CLASS,"-----onHostResume---");
+//      Log.i(REACT_CLASS,"-----onHostResume---");
       veery.serviceResume();
     }
   }
@@ -567,7 +567,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   @Override
   public void onHostPause() {
     if (veery != null){
-      Log.i(REACT_CLASS,"-----onHostPause---");
+//      Log.i(REACT_CLASS,"-----onHostPause---");
       veery.servicePause();
     }
   }
@@ -575,7 +575,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   @Override
   public void onHostDestroy() {
     if (veery != null){
-      Log.i(REACT_CLASS,"-----onHostDestroy---");
+//      Log.i(REACT_CLASS,"-----onHostDestroy---");
       try {
         veery.serviceDisconnect();
       }catch (Throwable t){
