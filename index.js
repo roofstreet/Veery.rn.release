@@ -8,15 +8,19 @@ class Veery {
 
   }
 
+  //veery v2
+
  static  GEOJSON_LINESTRING = "LineString";
   static  GEOJSON_MULTIPOINT =  "MultiPoint";
   static  HISTORY_RAW = 1;
   static  HISTORY_ROUTEMATCH = 2;
-  static  DEACTIVATE_ALL = -4;
-  static  FOREGROUND = 0;
-  static  BACKGROUND = 4;
-  static  BACKEND = 8;
-  static  GEOPROFILE = 12;
+  static  DEACTIVATE_ALL = 0;
+  static  FOREGROUND_GEOLOC = 1;
+  static  BACKGROUND_GEOLOC = 2;
+  static  COLLECT = 4;
+  static  ROUTE_MATCH = 8;
+  static  POINT_OF_INTERST = 16;
+  static  PREDICTION = 32;
   static  NOTIF_HELLO = "hello";
   static  NOTIF_ROUTEMATCH = "routematch";
   static  NOTIF_POI = "poi";
