@@ -21,6 +21,12 @@ class Veery {
   static  ROUTE_MATCH = 8;
   static  POINT_OF_INTERST = 16;
   static  PREDICTION = 32;
+
+  static  FOREGROUND = Veery.FOREGROUND_GEOLOC;
+  static  BACKGROUND = Veery.BACKGROUND_GEOLOC;
+  static  BACKEND = 14;//Veery.BACKGROUND + Veery.COLLECT + Veery.ROUTE_MATCH;
+  static  GEOPROFILE = 62;//Veery.BACKEND + Veery.POINT_OF_INTERST + Veery.PREDICTION;
+
   static  NOTIF_HELLO = "hello";
   static  NOTIF_ROUTEMATCH = "routematch";
   static  NOTIF_POI = "poi";

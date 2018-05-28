@@ -17,19 +17,21 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.roofstreet.android.veery.Veery;
 
 import org.json.JSONObject;
 
 import java.util.Calendar;
 
+// veery v2
 public class RNVeeryModule extends ReactContextBaseJavaModule implements LifecycleEventListener, Veery.LocationUpdate ,Veery.RouteMatch,Veery.PoiUpdate, Veery.PredictionUpdate{
   public static final String REACT_CLASS = "RNVeery";
-  public static final int DEACTIVATE_ALL = Veery.DEACTIVATE_ALL;
-  public static final int FOREGROUND = Veery.FOREGROUND;
-  public static final int BACKGROUND = Veery.BACKGROUND;
-  public static final int BACKEND = Veery.BACKEND;
-  public static final int GEOPROFILE = Veery.GEOPROFILE;
+//  public static final int DEACTIVATE_ALL = Veery.DEACTIVATE_ALL;
+//  public static final int FOREGROUND = Veery.FOREGROUND;
+//  public static final int BACKGROUND = Veery.BACKGROUND;
+//  public static final int BACKEND = Veery.BACKEND;
+//  public static final int GEOPROFILE = Veery.GEOPROFILE;
   private static String TOKEN = "";
   private  static boolean TOKENN_SENT = false;
   private boolean mRequestLocation = false;
@@ -44,6 +46,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
     super(reactContext);
     this.reactContext = reactContext;
     reactContext.addLifecycleEventListener(this);
+    TOKEN = FirebaseInstanceId.getInstance().getToken();
   }
 
   @Override
@@ -102,12 +105,12 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   @ReactMethod
   public void setVeeryToken(String token){
 
-     if(ifVeery()) {
-       veery.setFirebaseToken(token);
-     }else{
-       TOKEN = token;
-       TOKENN_SENT = false;
-     }
+    if(ifVeery() && !TOKEN.equals("")) {
+      veery.setFirebaseToken(token);
+    }else{
+      TOKEN = token;
+      TOKENN_SENT = false;
+    }
 
   }
   @ReactMethod
@@ -531,7 +534,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
       if (getCurrentActivity()!=null) {
         veery = new Veery(getCurrentActivity());
         veery.serviceConnect();
-        if (!TOKENN_SENT){
+        if (!TOKENN_SENT && !TOKEN.equals("")){
           veery.setFirebaseToken(TOKEN);
           TOKENN_SENT = true;
         }
