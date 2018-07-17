@@ -6,12 +6,14 @@ import android.location.Location;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeArray;
@@ -581,9 +583,57 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
 //      Log.i(REACT_CLASS,"-----onHostDestroy---");
       try {
         veery.serviceDisconnect();
+        veery = null;
       }catch (Throwable t){
         ////
       }
     }
+  }
+
+  @ReactMethod
+  public void activateWithOptin(int activate,int version,ReadableMap view,ReadableMap img, ReadableMap txt,ReadableMap btnOK,ReadableMap btnNO){
+
+//    if (ifVeery()) {
+//
+//      Veery.OptinView optinView = new Veery.OptinView();
+//      optinView.width = view.getInt("width");
+//      optinView.height = view.getInt("height");
+//      optinView.x = (float) view.getDouble("X");
+//      optinView.y = (float) view.getDouble("Y");
+//
+//      Veery.OptinImage optinImage = new Veery.OptinImage();
+//      optinImage.name = img.getString("name");
+//      optinImage.width = img.getInt("width");
+//      optinImage.height = img.getInt("height");
+//      optinImage.x = (float) img.getDouble("X");
+//      optinImage.y = (float) img.getDouble("Y");
+//
+//      Veery.OptinText optinText = new Veery.OptinText();
+//      optinText.message = txt.getString("message");
+//      optinText.width = txt.getInt("width");
+//      optinText.height = txt.getInt("height");
+//      optinText.x = (float) txt.getDouble("X");
+//      optinText.y = (float) txt.getDouble("Y");
+//
+//      Veery.OptinButton optinButtonOK = new Veery.OptinButton();
+//      optinButtonOK.text = btnOK.getString("text");
+//      optinButtonOK.textColor = btnOK.getString("textColor");
+//      optinButtonOK.color = btnOK.getString("color");
+//      optinButtonOK.width = btnOK.getInt("width");
+//      optinButtonOK.height = btnOK.getInt("height");
+//
+//      Veery.OptinButton optinButtonNO = new Veery.OptinButton();
+//      optinButtonNO.text = btnNO.getString("text");
+//      optinButtonNO.textColor = btnNO.getString("textColor");
+//      optinButtonNO.color = btnNO.getString("color");
+//      optinButtonNO.width = btnNO.getInt("width");
+//      optinButtonNO.height = btnNO.getInt("height");
+//
+//      try{
+//        veery.activateWithOptin(activate,version,optinView, optinImage, optinText, optinButtonOK, optinButtonNO);
+//      }catch (WindowManager.BadTokenException e){
+//        Log.e("RNVeery"," optin : WindowManager.BadTokenException :: "+e);
+//      }
+//    }
   }
 }

@@ -19,13 +19,13 @@ class Veery {
   static  BACKGROUND_GEOLOC = 2;
   static  COLLECT = 4;
   static  ROUTE_MATCH = 8;
-  static  POINT_OF_INTERST = 16;
+  static  POINT_OF_INTEREST = 16;
   static  PREDICTION = 32;
 
   static  FOREGROUND = Veery.FOREGROUND_GEOLOC;
   static  BACKGROUND = Veery.BACKGROUND_GEOLOC;
   static  BACKEND = 14;//Veery.BACKGROUND + Veery.COLLECT + Veery.ROUTE_MATCH;
-  static  GEOPROFILE = 62;//Veery.BACKEND + Veery.POINT_OF_INTERST + Veery.PREDICTION;
+  static  GEOPROFILE = 62;//Veery.BACKEND + Veery.POINT_OF_INTEREST + Veery.PREDICTION;
 
   static  NOTIF_HELLO = "hello";
   static  NOTIF_ROUTEMATCH = "routematch";
@@ -36,6 +36,101 @@ class Veery {
   static  USER_AUTH_GEOLOC_BACKGROUND  = 2;
   static  USER_AUTH_NOTIFICATION  = 4;
 
+static OptinView = class {
+
+    constructor(){
+      
+    this.width = 0;
+    this.height = 0;
+    this.x = -1;
+    this.y = -1;
+  }
+
+  }
+  static OptinImage = class {
+
+    constructor(){
+
+    this.name = "";
+    this.width = 0;
+    this.height = 0;
+    this.x = -1;
+    this.y = -1;
+    }
+
+  }
+
+  static OptinText= class {
+
+    constructor(){
+
+    this.message = "";
+    this.width = 0;
+    this.height = 0;
+    this.x = -1;
+    this.y = -1;
+
+    }
+  }
+
+  static OptinButton= class {
+
+    constructor(){
+
+    this.width = 0;
+    this.height = 0;
+    this.text = "";
+    this.textColor = "";
+    this.color = "";
+  }
+
+  }
+
+  static activateWithOptin(activate,version,view, img, txt, btnOK, btnNO ){
+
+    var optinview = {
+      "width" : view.width,
+      "height" : view.height,
+      "X" : view.x,
+      "Y" : view.y
+    };
+
+    var image = {
+      "name" : img.name,
+      "width" : img.width,
+      "height" : img.height,
+      "X" : img.x,
+      "Y" : img.y
+    };
+
+    var text = {
+      "message" : txt.message,
+      "width" : txt.width,
+      "height" : txt.height,
+      "X" : txt.x,
+      "Y" : txt.y
+    };
+    var buttonNO = {
+      "width" : btnNO.width,
+      "height" : btnNO.height,
+      "text" : btnNO.text,
+      "textColor" : btnNO.textColor,
+      "color" : btnNO.color
+    };
+
+    var buttonOK = {
+      "width" : btnOK.width,
+      "height" : btnOK.height,
+      "text" : btnOK.text,
+      "textColor" : btnOK.textColor,
+      "color" : btnOK.color
+    };
+
+    
+
+    RNVeery.activateWithOptin(activate,version,optinview,image,text,buttonOK,buttonNO);
+   
+  }
   static serviceConnect(){
     RNVeery.serviceConnect();
   }

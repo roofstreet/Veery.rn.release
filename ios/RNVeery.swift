@@ -388,7 +388,46 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss.SSSZ"
         return dateFormatter.string(from: date)
     }
-    
+    @objc func activateWithOptin(_ activate : Int,_ version : Int ,_ optinView : NSDictionary,_ optinImage : NSDictionary,_ optinText : NSDictionary,_ optinButtonOK : NSDictionary,_ optinButtonNO : NSDictionary){
+        
+        NSLog("optin veery demo native bridge")
+        
+        let view = Veery.OptinView()
+        view.height = optinView["height"] as! Int
+        view.width = optinView["width"] as! Int
+        view.x = optinView["X"] as! Float
+        view.y = optinView["Y"] as! Float
+        
+        let image = Veery.OptinImage()
+        image.height = optinImage["height"] as! Int
+        image.width = optinImage["width"] as! Int
+        image.x = optinImage["X"] as! Float
+        image.y = optinImage["Y"] as! Float
+        image.name = optinImage["name"] as! String
+        
+        let text = Veery.OptinText()
+        text.height = optinText["height"] as! Int
+        text.width = optinText["width"] as! Int
+        text.x =  optinText["X"] as! Float
+        text.y = optinText["Y"] as! Float
+        text.message = optinText["message"] as! String
+        
+        let btnOK = Veery.OptinButton()
+        btnOK.height = optinButtonOK["height"] as! Int
+        btnOK.width = optinButtonOK["width"] as! Int
+        btnOK.text = optinButtonOK["text"] as! String
+        btnOK.color = optinButtonOK["color"] as! String
+        btnOK.textColor = optinButtonOK["textColor"] as! String
+        
+        let btnNO = Veery.OptinButton()
+        btnNO.height = optinButtonNO["height"] as! Int
+        btnNO.width = optinButtonNO["width"] as! Int
+        btnNO.text = optinButtonNO["text"] as! String
+        btnNO.color = optinButtonNO["color"] as! String
+        btnNO.textColor = optinButtonNO["textColor"] as! String
+        
+        veery.activateWithOptin(activate: activate, version: version, optinView: view, optinImage: image, optinText: text, optinButtonOK: btnOK, optinButtonNO: btnNO)
+    }
     
 }
 extension Data {
