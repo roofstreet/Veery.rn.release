@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
   s.source_files    = 'RNVeery/**/*.{h,m}'
   s.preserve_paths  = "**/*.js"
 
-  s.dependency 'Veery', '1.3.6'
+  s.dependency 'Veery', '1.4.0'
 
 end

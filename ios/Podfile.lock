@@ -1,16 +1,16 @@
 PODS:
-  - Veery (1.3.6)
+  - Veery (1.4.0)
 
 DEPENDENCIES:
-  - Veery (= 1.3.6)
+  - Veery (= 1.4.0)
 
 SPEC REPOS:
   https://github.com/roofstreet/cocoa.repo.git:
     - Veery
 
 SPEC CHECKSUMS:
-  Veery: 79069542594874c184c8665684661f18043c56a3
+  Veery: 7a8913d44a4c5ac6e3574762e13f56c28ec04b32
 
-PODFILE CHECKSUM: 5cf42ea97a5ddac7eb24b10e1a2ef03b652ebedf
+PODFILE CHECKSUM: 25d5634d08bbdc62041dac3239da2945a7749f8a
 
 COCOAPODS: 1.5.0
