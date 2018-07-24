@@ -44,6 +44,7 @@ static OptinView = class {
     this.height = 0;
     this.x = -1;
     this.y = -1;
+    this.backgroundColor = "";
   }
 
   }
@@ -56,6 +57,10 @@ static OptinView = class {
     this.height = 0;
     this.x = -1;
     this.y = -1;
+    this.bottomMargin = 0;
+    this.topMargin = 0;
+    this.rightMargin = 0;
+    this.leftMargin = 0;
     }
 
   }
@@ -69,6 +74,10 @@ static OptinView = class {
     this.height = 0;
     this.x = -1;
     this.y = -1;
+    this.bottomMargin = 5;
+    this.topMargin = 5;
+    this.rightMargin = 5;
+    this.leftMargin = 5;
 
     }
   }
@@ -82,6 +91,10 @@ static OptinView = class {
     this.text = "";
     this.textColor = "";
     this.color = "";
+    this.bottomMargin = -1;
+    this.topMargin = -1;
+    this.rightMargin = -1;
+    this.leftMargin = -1;
   }
 
   }
@@ -92,7 +105,8 @@ static OptinView = class {
       "width" : view.width,
       "height" : view.height,
       "X" : view.x,
-      "Y" : view.y
+      "Y" : view.y,
+      "backgroundColor" : view.backgroundColor
     };
 
     var image = {
@@ -100,7 +114,11 @@ static OptinView = class {
       "width" : img.width,
       "height" : img.height,
       "X" : img.x,
-      "Y" : img.y
+      "Y" : img.y,
+      "bottomMargin" : img.bottomMargin,
+      "topMargin" : img.topMargin,
+      "leftMargin" : img.leftMargin,
+      "rightMargin" : img.rightMargin
     };
 
     var text = {
@@ -108,14 +126,22 @@ static OptinView = class {
       "width" : txt.width,
       "height" : txt.height,
       "X" : txt.x,
-      "Y" : txt.y
+      "Y" : txt.y,
+      "bottomMargin" : txt.bottomMargin,
+      "topMargin" : txt.topMargin,
+      "leftMargin" : txt.leftMargin,
+      "rightMargin" : txt.rightMargin
     };
     var buttonNO = {
       "width" : btnNO.width,
       "height" : btnNO.height,
       "text" : btnNO.text,
       "textColor" : btnNO.textColor,
-      "color" : btnNO.color
+      "color" : btnNO.color,
+      "bottomMargin" : btnNO.bottomMargin,
+      "topMargin" : btnNO.topMargin,
+      "leftMargin" : btnNO.leftMargin,
+      "rightMargin" : btnNO.rightMargin
     };
 
     var buttonOK = {
@@ -123,7 +149,11 @@ static OptinView = class {
       "height" : btnOK.height,
       "text" : btnOK.text,
       "textColor" : btnOK.textColor,
-      "color" : btnOK.color
+      "color" : btnOK.color,
+      "bottomMargin" : btnOK.bottomMargin,
+      "topMargin" : btnOK.topMargin,
+      "leftMargin" : btnOK.leftMargin,
+      "rightMargin" : btnOK.rightMargin
     };
 
     

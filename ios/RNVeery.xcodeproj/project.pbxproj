@@ -29,7 +29,6 @@
 		3E85DE8B1FBC8F8B009C03F6 /* RNVeery-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNVeery-Bridging-Header.h"; sourceTree = "<group>"; };
 		3E85DE8C1FBC8F8B009C03F6 /* RNVeery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNVeery.swift; sourceTree = "<group>"; };
 		67178738932B71211C1AAEAD /* Pods-RNVeery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNVeery.release.xcconfig"; path = "Pods/Target Support Files/Pods-RNVeery/Pods-RNVeery.release.xcconfig"; sourceTree = "<group>"; };
-		A4F35F2308225FD3A1F697D4 /* libPods-RNVeery.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNVeery.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5A7BDD481E4FAC9FBB254E /* Pods-RNVeery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNVeery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RNVeery/Pods-RNVeery.debug.xcconfig"; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNVeery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNVeery.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,7 +55,6 @@
 		3E85DE871FBC8D44009C03F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A4F35F2308225FD3A1F697D4 /* libPods-RNVeery.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

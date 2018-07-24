@@ -390,13 +390,12 @@ class RNVeery : RCTViewManager , VeeryDelegate{
     }
     @objc func activateWithOptin(_ activate : Int,_ version : Int ,_ optinView : NSDictionary,_ optinImage : NSDictionary,_ optinText : NSDictionary,_ optinButtonOK : NSDictionary,_ optinButtonNO : NSDictionary){
         
-        NSLog("optin veery demo native bridge")
-        
         let view = Veery.OptinView()
         view.height = optinView["height"] as! Int
         view.width = optinView["width"] as! Int
         view.x = optinView["X"] as! Float
         view.y = optinView["Y"] as! Float
+        view.backgroundColor = optinView["backgroundColor"] as! String
         
         let image = Veery.OptinImage()
         image.height = optinImage["height"] as! Int
@@ -404,6 +403,10 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         image.x = optinImage["X"] as! Float
         image.y = optinImage["Y"] as! Float
         image.name = optinImage["name"] as! String
+        image.bottomMargin =  optinImage["bottomMargin"] as! Int
+        image.topMargin =  optinImage["topMargin"] as! Int
+        image.leftMargin =  optinImage["leftMargin"] as! Int
+        image.rightMargin =  optinImage["rightMargin"] as! Int
         
         let text = Veery.OptinText()
         text.height = optinText["height"] as! Int
@@ -411,6 +414,11 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         text.x =  optinText["X"] as! Float
         text.y = optinText["Y"] as! Float
         text.message = optinText["message"] as! String
+        text.bottomMargin =  optinText["bottomMargin"] as! Int
+        text.topMargin =  optinText["topMargin"] as! Int
+        text.leftMargin =  optinText["leftMargin"] as! Int
+        text.rightMargin =  optinText["rightMargin"] as! Int
+        
         
         let btnOK = Veery.OptinButton()
         btnOK.height = optinButtonOK["height"] as! Int
@@ -418,6 +426,10 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         btnOK.text = optinButtonOK["text"] as! String
         btnOK.color = optinButtonOK["color"] as! String
         btnOK.textColor = optinButtonOK["textColor"] as! String
+        btnOK.bottomMargin =  optinButtonOK["bottomMargin"] as! Int
+        btnOK.topMargin =  optinButtonOK["topMargin"] as! Int
+        btnOK.leftMargin =  optinButtonOK["leftMargin"] as! Int
+        btnOK.rightMargin =  optinButtonOK["rightMargin"] as! Int
         
         let btnNO = Veery.OptinButton()
         btnNO.height = optinButtonNO["height"] as! Int
@@ -425,6 +437,10 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         btnNO.text = optinButtonNO["text"] as! String
         btnNO.color = optinButtonNO["color"] as! String
         btnNO.textColor = optinButtonNO["textColor"] as! String
+        btnNO.bottomMargin =  optinButtonNO["bottomMargin"] as! Int
+        btnNO.topMargin =  optinButtonNO["topMargin"] as! Int
+        btnNO.leftMargin =  optinButtonNO["leftMargin"] as! Int
+        btnNO.rightMargin =  optinButtonNO["rightMargin"] as! Int
         
         veery.activateWithOptin(activate: activate, version: version, optinView: view, optinImage: image, optinText: text, optinButtonOK: btnOK, optinButtonNO: btnNO)
     }
