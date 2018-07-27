@@ -339,7 +339,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) NSInteger USER_AUTH_
 - (NSInteger)userAgreement SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)userAgreementAge SWIFT_WARN_UNUSED_RESULT;
 - (void)userAgreedPurposeWithPurposeVersion:(NSInteger)PurposeVersion PurposeText:(NSString * _Nonnull)PurposeText ApprovalButtonText:(NSString * _Nonnull)ApprovalButtonText RejectionButtonText:(NSString * _Nonnull)RejectionButtonText Agreed:(BOOL)Agreed;
-- (void)activateWithOptinWithActivate:(NSInteger)activate version:(NSInteger)version optinView:(OptinView * _Nullable)optinView optinImage:(OptinImage * _Nonnull)optinImage optinText:(OptinText * _Nonnull)optinText optinButtonOK:(OptinButton * _Nonnull)optinButtonOK optinButtonNO:(OptinButton * _Nonnull)optinButtonNO;
+- (void)activateWithOptinWithActivate:(NSInteger)activate version:(NSInteger)version optinView:(OptinView * _Nullable)optinView optinImage:(OptinImage * _Nonnull)optinImage optinText:(OptinText * _Nonnull)optinText optinButtonOK:(OptinButton * _Nonnull)optinButtonOK optinButtonNO:(OptinButton * _Nonnull)optinButtonNO NbProposal:(NSInteger)NbProposal proposalCycle:(NSInteger)proposalCycle;
 - (void)acceptWithSender:(UIButton * _Nonnull)sender;
 - (void)refuseWithSender:(UIButton * _Nonnull)sender;
 @end
@@ -411,6 +411,7 @@ SWIFT_CLASS("_TtCC5Veery5Veery9OptinView")
 @property (nonatomic) NSInteger height;
 @property (nonatomic) NSInteger width;
 @property (nonatomic, copy) NSString * _Nonnull backgroundColor;
+@property (nonatomic) NSInteger cornerRadius;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -456,6 +457,7 @@ SWIFT_CLASS("_TtCC5Veery5Veery11OptinButton")
 @property (nonatomic) NSInteger topMargin;
 @property (nonatomic) NSInteger rightMargin;
 @property (nonatomic) NSInteger leftMargin;
+@property (nonatomic) NSInteger cornerRadius;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

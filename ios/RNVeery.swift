@@ -388,7 +388,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss.SSSZ"
         return dateFormatter.string(from: date)
     }
-    @objc func activateWithOptin(_ activate : Int,_ version : Int ,_ optinView : NSDictionary,_ optinImage : NSDictionary,_ optinText : NSDictionary,_ optinButtonOK : NSDictionary,_ optinButtonNO : NSDictionary){
+    @objc func activateWithOptin(_ activate : Int,_ version : Int ,_ optinView : NSDictionary,_ optinImage : NSDictionary,_ optinText : NSDictionary,_ optinButtonOK : NSDictionary,_ optinButtonNO : NSDictionary,_ NbProposal : Int, _ proposalCycle : Int ){
         
         let view = Veery.OptinView()
         view.height = optinView["height"] as! Int
@@ -396,6 +396,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         view.x = optinView["X"] as! Float
         view.y = optinView["Y"] as! Float
         view.backgroundColor = optinView["backgroundColor"] as! String
+        view.cornerRadius = optinView["cornerRadius"] as! Int
         
         let image = Veery.OptinImage()
         image.height = optinImage["height"] as! Int
@@ -430,6 +431,7 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         btnOK.topMargin =  optinButtonOK["topMargin"] as! Int
         btnOK.leftMargin =  optinButtonOK["leftMargin"] as! Int
         btnOK.rightMargin =  optinButtonOK["rightMargin"] as! Int
+        btnOK.cornerRadius =  optinButtonOK["cornerRadius"] as! Int
         
         let btnNO = Veery.OptinButton()
         btnNO.height = optinButtonNO["height"] as! Int
@@ -441,8 +443,9 @@ class RNVeery : RCTViewManager , VeeryDelegate{
         btnNO.topMargin =  optinButtonNO["topMargin"] as! Int
         btnNO.leftMargin =  optinButtonNO["leftMargin"] as! Int
         btnNO.rightMargin =  optinButtonNO["rightMargin"] as! Int
+        btnNO.cornerRadius =  optinButtonNO["cornerRadius"] as! Int
         
-        veery.activateWithOptin(activate: activate, version: version, optinView: view, optinImage: image, optinText: text, optinButtonOK: btnOK, optinButtonNO: btnNO)
+        veery.activateWithOptin(activate: activate, version: version, optinView: view, optinImage: image, optinText: text, optinButtonOK: btnOK, optinButtonNO: btnNO,NbProposal: NbProposal,proposalCycle: proposalCycle)
     }
     
 }

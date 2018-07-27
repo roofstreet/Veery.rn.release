@@ -591,66 +591,72 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   }
 
   @ReactMethod
-  public void activateWithOptin(int activate,int version,ReadableMap view,ReadableMap img, ReadableMap txt,ReadableMap btnOK,ReadableMap btnNO){
+  public void activateWithOptin(int activate,int version,ReadableMap view,ReadableMap img, ReadableMap txt,ReadableMap btnOK,ReadableMap btnNO, int NbProposal, int proposalCycle){
 
-    if (ifVeery()) {
+      if (ifVeery()) {
 
-      Veery.OptinView optinView = new Veery.OptinView();
-      optinView.width = view.getInt("width");
-      optinView.height = view.getInt("height");
-      optinView.x = (float) view.getDouble("X");
-      optinView.y = (float) view.getDouble("Y");
-      optinView.backgroundColor = view.getString("backgroundColor");
+          Veery.OptinView optinView = new Veery.OptinView();
+          optinView.width = view.getInt("width");
+          optinView.height = view.getInt("height");
+          optinView.x = (float) view.getDouble("X");
+          optinView.y = (float) view.getDouble("Y");
+          optinView.backgroundColor = view.getString("backgroundColor");
+          optinView.cornerRadius = view.getInt("cornerRadius");
 
-      Veery.OptinImage optinImage = new Veery.OptinImage();
-      optinImage.name = img.getString("name");
-      optinImage.width = img.getInt("width");
-      optinImage.height = img.getInt("height");
-      optinImage.x = (float) img.getDouble("X");
-      optinImage.y = (float) img.getDouble("Y");
-      optinImage.topMargin = img.getInt("topMargin");
-      optinImage.bottomMargin = img.getInt("bottomMargin");
-      optinImage.rightMargin = img.getInt("rightMargin");
-      optinImage.leftMargin = img.getInt("leftMargin");
 
-      Veery.OptinText optinText = new Veery.OptinText();
-      optinText.message = txt.getString("message");
-      optinText.width = txt.getInt("width");
-      optinText.height = txt.getInt("height");
-      optinText.x = (float) txt.getDouble("X");
-      optinText.y = (float) txt.getDouble("Y");
-      optinText.topMargin = txt.getInt("topMargin");
-      optinText.bottomMargin = txt.getInt("bottomMargin");
-      optinText.rightMargin = txt.getInt("rightMargin");
-      optinText.leftMargin = txt.getInt("leftMargin");
+          Veery.OptinImage optinImage = new Veery.OptinImage();
+          optinImage.name = img.getString("name");
+          optinImage.width = img.getInt("width");
+          optinImage.height = img.getInt("height");
+          optinImage.x = (float) img.getDouble("X");
+          optinImage.y = (float) img.getDouble("Y");
+          optinImage.topMargin = img.getInt("topMargin");
+          optinImage.bottomMargin = img.getInt("bottomMargin");
+          optinImage.rightMargin = img.getInt("rightMargin");
+          optinImage.leftMargin = img.getInt("leftMargin");
 
-      Veery.OptinButton optinButtonOK = new Veery.OptinButton();
-      optinButtonOK.text = btnOK.getString("text");
-      optinButtonOK.textColor = btnOK.getString("textColor");
-      optinButtonOK.color = btnOK.getString("color");
-      optinButtonOK.width = btnOK.getInt("width");
-      optinButtonOK.height = btnOK.getInt("height");
-      optinButtonOK.topMargin = btnOK.getInt("topMargin");
-      optinButtonOK.bottomMargin = btnOK.getInt("bottomMargin");
-      optinButtonOK.rightMargin = btnOK.getInt("rightMargin");
-      optinButtonOK.leftMargin = btnOK.getInt("leftMargin");
+          Veery.OptinText optinText = new Veery.OptinText();
+          optinText.message = txt.getString("message");
+          optinText.width = txt.getInt("width");
+          optinText.height = txt.getInt("height");
+          optinText.x = (float) txt.getDouble("X");
+          optinText.y = (float) txt.getDouble("Y");
+          optinText.topMargin = txt.getInt("topMargin");
+          optinText.bottomMargin = txt.getInt("bottomMargin");
+          optinText.rightMargin = txt.getInt("rightMargin");
+          optinText.leftMargin = txt.getInt("leftMargin");
 
-      Veery.OptinButton optinButtonNO = new Veery.OptinButton();
-      optinButtonNO.text = btnNO.getString("text");
-      optinButtonNO.textColor = btnNO.getString("textColor");
-      optinButtonNO.color = btnNO.getString("color");
-      optinButtonNO.width = btnNO.getInt("width");
-      optinButtonNO.height = btnNO.getInt("height");
-      optinButtonNO.topMargin = btnNO.getInt("topMargin");
-      optinButtonNO.bottomMargin = btnNO.getInt("bottomMargin");
-      optinButtonNO.rightMargin = btnNO.getInt("rightMargin");
-      optinButtonNO.leftMargin = btnNO.getInt("leftMargin");
+          Veery.OptinButton optinButtonOK = new Veery.OptinButton();
+          optinButtonOK.text = btnOK.getString("text");
+          optinButtonOK.textColor = btnOK.getString("textColor");
+          optinButtonOK.color = btnOK.getString("color");
+          optinButtonOK.width = btnOK.getInt("width");
+          optinButtonOK.height = btnOK.getInt("height");
+          optinButtonOK.topMargin = btnOK.getInt("topMargin");
+          optinButtonOK.bottomMargin = btnOK.getInt("bottomMargin");
+          optinButtonOK.rightMargin = btnOK.getInt("rightMargin");
+          optinButtonOK.leftMargin = btnOK.getInt("leftMargin");
+          optinButtonOK.cornerRadius = btnOK.getInt("cornerRadius");
 
-      try{
-        veery.activateWithOptin(activate,version,optinView, optinImage, optinText, optinButtonOK, optinButtonNO);
-      }catch (WindowManager.BadTokenException e){
-        Log.e("RNVeery"," optin : WindowManager.BadTokenException :: "+e);
+          Veery.OptinButton optinButtonNO = new Veery.OptinButton();
+          optinButtonNO.text = btnNO.getString("text");
+          optinButtonNO.textColor = btnNO.getString("textColor");
+          optinButtonNO.color = btnNO.getString("color");
+          optinButtonNO.width = btnNO.getInt("width");
+          optinButtonNO.height = btnNO.getInt("height");
+          optinButtonNO.topMargin = btnNO.getInt("topMargin");
+          optinButtonNO.bottomMargin = btnNO.getInt("bottomMargin");
+          optinButtonNO.rightMargin = btnNO.getInt("rightMargin");
+          optinButtonNO.leftMargin = btnNO.getInt("leftMargin");
+          optinButtonNO.cornerRadius = btnNO.getInt("cornerRadius");
+
+          try{
+              veery.activateWithOptin(activate,version,optinView, optinImage, optinText, optinButtonOK, optinButtonNO,NbProposal,proposalCycle);
+          }catch (WindowManager.BadTokenException e){
+              Log.e("RNVeery"," optin : WindowManager.BadTokenException :: "+e);
+          }
       }
-    }
   }
+
+
 }

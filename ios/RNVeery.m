@@ -84,6 +84,6 @@ RCT_EXTERN_METHOD(userAgreement: (RCTResponseSenderBlock *)callback)
 RCT_EXTERN_METHOD(userAgreementAge: (RCTResponseSenderBlock *)callback)
 RCT_EXTERN_METHOD(userAgreedPurpose: (NSInteger *)PurposeVersion :(NSString *)PurposeText :(NSString *)ApprovalButtonText : (NSString *)RejectionButtonText : (BOOL *)Agreed )
 
-RCT_EXTERN_METHOD(activateWithOptin: (NSInteger *)activate : (NSInteger *)version : (NSDictionary *)optinView :(NSDictionary *)optinImage :(NSDictionary *)optinText :(NSDictionary *)optinButtonOK :(NSDictionary *)optinButtonNO)
+RCT_EXTERN_METHOD(activateWithOptin: (NSInteger *)activate : (NSInteger *)version : (NSDictionary *)optinView :(NSDictionary *)optinImage :(NSDictionary *)optinText :(NSDictionary *)optinButtonOK :(NSDictionary *)optinButtonNO : (NSInteger *)NbProposal : (NSInteger *)proposalCycle)
 
 @end

@@ -45,6 +45,7 @@ static OptinView = class {
     this.x = -1;
     this.y = -1;
     this.backgroundColor = "";
+    this.cornerRadius = 0;
   }
 
   }
@@ -95,18 +96,20 @@ static OptinView = class {
     this.topMargin = -1;
     this.rightMargin = -1;
     this.leftMargin = -1;
+    this.cornerRadius = 0;
   }
 
   }
 
-  static activateWithOptin(activate,version,view, img, txt, btnOK, btnNO ){
+  static activateWithOptin(activate,version,view, img, txt, btnOK, btnNO ,NbProposal, proposalCycle){
 
     var optinview = {
       "width" : view.width,
       "height" : view.height,
       "X" : view.x,
       "Y" : view.y,
-      "backgroundColor" : view.backgroundColor
+      "backgroundColor" : view.backgroundColor,
+      "cornerRadius" : view.cornerRadius
     };
 
     var image = {
@@ -141,7 +144,8 @@ static OptinView = class {
       "bottomMargin" : btnNO.bottomMargin,
       "topMargin" : btnNO.topMargin,
       "leftMargin" : btnNO.leftMargin,
-      "rightMargin" : btnNO.rightMargin
+      "rightMargin" : btnNO.rightMargin,
+      "cornerRadius" : btnNO.cornerRadius
     };
 
     var buttonOK = {
@@ -153,12 +157,13 @@ static OptinView = class {
       "bottomMargin" : btnOK.bottomMargin,
       "topMargin" : btnOK.topMargin,
       "leftMargin" : btnOK.leftMargin,
-      "rightMargin" : btnOK.rightMargin
+      "rightMargin" : btnOK.rightMargin,
+      "cornerRadius" : btnOK.cornerRadius
     };
 
     
 
-    RNVeery.activateWithOptin(activate,version,optinview,image,text,buttonOK,buttonNO);
+    RNVeery.activateWithOptin(activate,version,optinview,image,text,buttonOK,buttonNO,NbProposal,proposalCycle);
    
   }
   static serviceConnect(){
