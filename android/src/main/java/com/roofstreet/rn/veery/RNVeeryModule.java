@@ -49,6 +49,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
     this.reactContext = reactContext;
     reactContext.addLifecycleEventListener(this);
     TOKEN = FirebaseInstanceId.getInstance().getToken();
+
   }
 
   @Override
@@ -534,13 +535,19 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   private boolean ifVeery(){
     if (veery == null) {
       if (getCurrentActivity()!=null) {
-        veery = new Veery(getCurrentActivity());
-        veery.serviceConnect();
-        if (!TOKENN_SENT && !TOKEN.equals("")){
-          veery.setFirebaseToken(TOKEN);
-          TOKENN_SENT = true;
+        try {
+          veery = new Veery(getCurrentActivity());
+          veery.serviceConnect();
+          if (!TOKENN_SENT && !TOKEN.equals("")) {
+            veery.setFirebaseToken(TOKEN);
+            TOKENN_SENT = true;
+          }
+
+          return true;
+        }catch (NullPointerException e){
+          e.printStackTrace();
+          return false;
         }
-        return true;
       }
       return false;
     }
@@ -650,8 +657,9 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
           optinButtonNO.leftMargin = btnNO.getInt("leftMargin");
           optinButtonNO.cornerRadius = btnNO.getInt("cornerRadius");
 
+
           try{
-              veery.activateWithOptin(activate,version,optinView, optinImage, optinText, optinButtonOK, optinButtonNO,NbProposal,proposalCycle);
+              veery.activateWithOptin(activate,version,optinView, optinImage, optinText, optinButtonOK, optinButtonNO,NbProposal,proposalCycle,getCurrentActivity());
           }catch (WindowManager.BadTokenException e){
               Log.e("RNVeery"," optin : WindowManager.BadTokenException :: "+e);
           }
