@@ -83,11 +83,10 @@ class RNVeery : RCTViewManager , VeeryDelegate{
     // MARK: - LOCATIONS History
     //@objc(getLocationHostory::::)
     @objc func getLocationHistory(_ format : NSInteger,_ since : NSDate,_ until : NSDate,_ callback : RCTResponseSenderBlock) -> Void{
-        //    NSLog("getLocationHistory ------VeeryModuleManager---------\(format)-----\(since)-------\(until)------------")
+        
         if let locations = veery.getLocationHistory(format, since as Date, until as Date){
             callback([veeryLocationsToNSDictionary(locations: locations,format: format)])
         }else{
-            //      NSLog("getLocationHistory ------VeeryModuleManager-----------NSNull--")
             callback([NSNull()])
         }
     }
@@ -105,7 +104,6 @@ class RNVeery : RCTViewManager , VeeryDelegate{
     
     @objc func getPois(_ callback : RCTResponseSenderBlock) -> Void{
         let pois = veery.getPois()
-        //NSLog("getPois -----count-->\(pois.count())")
         callback([poisToNSDictionary(pois: pois)])
         
     }
@@ -121,7 +119,6 @@ class RNVeery : RCTViewManager , VeeryDelegate{
     // MARK: - Predictions
     @objc func getNextTrip(_ callback : RCTResponseSenderBlock) -> Void{
         if let prediction = veery.getNextTrip(){
-//            NSLog("getNextTrip -----getArrivalName-->\(prediction.getArrivalName())")
             callback([predictionToNSDictionary(predictions: prediction)])
         }else{
             callback([NSNull()])
@@ -137,7 +134,6 @@ class RNVeery : RCTViewManager , VeeryDelegate{
     }
     // MARK: - Notfications
     @objc func registerNotification(_ subscription : NSString ,_ format : NSString ){
-//        NSLog("registerNotification ------------\(subscription)----\(format)")
         veery.registerNotification(subscription as String, format as String)
     }
     @objc func unregisterNotification(_ subscription : NSString){
@@ -146,20 +142,13 @@ class RNVeery : RCTViewManager , VeeryDelegate{
     // MARK: - APNs
     
     @objc func setVeeryToken(_ token : NSString){
-        NSLog("setVeeryToken ------------------- \(token)")
         let tokend = Data(hexString : token as String)
-        //    NSLog("setVeeryToken -------data------------ \(tokend?.description)")
-        //    var tkn = ""
-        //    for i in 0..<tokend!.count{
-        //      tkn  = tkn + String(format: "%02.2hhX", arguments : [tokend![i]])
-        //    }
-        //    NSLog("setVeeryToken -------tkn------------ \(tkn)")
+      
         
-        veery.setAPNSToken(token: tokend! )//token.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false)!
+        veery.setAPNSToken(token: tokend! )
         
     }
     @objc func VeeryNotificationHandler(_ data : NSDictionary,_ callback : RCTResponseSenderBlock){
-//        NSLog("ReactVeery VeeryNotificationHandler-----\(data as! [AnyHashable : Any])")
         callback([veery.apnsMessageHandler(data as! [AnyHashable : Any])])
     }
     // MARK: - Tags
@@ -301,11 +290,6 @@ class RNVeery : RCTViewManager , VeeryDelegate{
             "getBoundingBox" : ["southwest" : southwestcoor,"northest" : northestcoor] as NSDictionary
             
             ] as NSDictionary
-//        NSLog("veeryLocationsToWritableMap -----locs [toGEOJSON_MULTIPOINT]------->\(locs ["toGEOJSON_MULTIPOINT"]!)")
-//        NSLog("veeryLocationsToWritableMap -----locs[getBoundingBox]------->\(locs["getBoundingBox"]!)")
-//        NSLog("veeryLocationsToWritableMap -----locs [toArray]------->\(locs ["toArray"]!)")
-//        NSLog("veeryLocationsToWritableMap -----locs [toGeoJSONArray]------->\(locs ["toGeoJSONArray"]!)")
-//        NSLog("veeryLocationsToWritableMap -----locs ---------->\(locs )")
         return locs as NSDictionary
     }
     

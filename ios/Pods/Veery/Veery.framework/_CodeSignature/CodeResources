@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Veery-Swift.h</key>
 		<data>
-		jYRdizL9PXfuqIE0i8JJcrC2gt8=
+		f+5VgQF+seb8FsxuCxJHVucS2E0=
 		</data>
 		<key>Headers/Veery.h</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		DkTqsEMGlbb5YUh4CCIPAHvxC9I=
+		HfAdR5l4vrMoh9Ks/tW3sgXWHCs=
 		</data>
 		<key>Modules/Veery.swiftmodule/arm.swiftdoc</key>
 		<data>
-		AQso93riTGc571XuAd6E1GMIJBs=
+		x9uaajw3cIsZHOxyjV4qVlyTYDk=
 		</data>
 		<key>Modules/Veery.swiftmodule/arm.swiftmodule</key>
 		<data>
-		uaiiYdGRBlVy+JhBoENe8GtuoCk=
+		wrZe9YgNN2kE/YDk0qNZ6jZvkUE=
 		</data>
 		<key>Modules/Veery.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		R75wwOWfXBn7Pd84/Q3BdkiEK+I=
+		fvoU0a7COEf6HQuH4GjKEH9y7v4=
 		</data>
 		<key>Modules/Veery.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		p1UROhfuhMwTBYeiCDS+hpVoXkY=
+		N6fe/gk4wE7U628WcRa3iWaFPic=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -95,11 +95,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jYRdizL9PXfuqIE0i8JJcrC2gt8=
+			f+5VgQF+seb8FsxuCxJHVucS2E0=
 			</data>
 			<key>hash2</key>
 			<data>
-			V3KMZ1pP65H6jqYWmVu8NHyc4cCdP6leFZKA78tfAnc=
+			B+g37OKtwFo9Scqp06My/UnT3PjpFs3mHjsYpitNU54=
 			</data>
 		</dict>
 		<key>Headers/Veery.h</key>
@@ -117,44 +117,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AQso93riTGc571XuAd6E1GMIJBs=
+			x9uaajw3cIsZHOxyjV4qVlyTYDk=
 			</data>
 			<key>hash2</key>
 			<data>
-			FaeTYIdbBdFmbjP2cWXV7DTr4uWZ1pD9YRsOxnvo8wI=
+			ncxcuucbJpjt4PPNHZQebBf/PJ5YAU9dItwcJbn3rcQ=
 			</data>
 		</dict>
 		<key>Modules/Veery.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			uaiiYdGRBlVy+JhBoENe8GtuoCk=
+			wrZe9YgNN2kE/YDk0qNZ6jZvkUE=
 			</data>
 			<key>hash2</key>
 			<data>
-			NwHpfm/sEbMs6afn6ABPvAVcdo1kcC7BKsx5uHJQdo4=
+			owurwwxU/HT2PafygXNuxjRsRzS1VueK0/XQNGXhFSc=
 			</data>
 		</dict>
 		<key>Modules/Veery.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			R75wwOWfXBn7Pd84/Q3BdkiEK+I=
+			fvoU0a7COEf6HQuH4GjKEH9y7v4=
 			</data>
 			<key>hash2</key>
 			<data>
-			va2NRyzp6K90KjFAjMOD9plj8wEcj05FQhG+upaY+z4=
+			4aIFqtIJVDV1X4XIM2WvsT8ROcZ2b8tKXIys3K18sA8=
 			</data>
 		</dict>
 		<key>Modules/Veery.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			p1UROhfuhMwTBYeiCDS+hpVoXkY=
+			N6fe/gk4wE7U628WcRa3iWaFPic=
 			</data>
 			<key>hash2</key>
 			<data>
-			RCPsx5MtECpFQI8VrlPhBBxFSUuVdPIw0mCM+FZ1S3A=
+			s++sfLJueZecWmDGrFD+zsdlqStug9YA0HxnRGIsNOE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -314,7 +314,7 @@
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>^</key>
+		<key>^.*</key>
 		<true/>
 		<key>^.*\.lproj/</key>
 		<dict>
@@ -345,24 +345,12 @@
 			<key>weight</key>
 			<real>11</real>
 		</dict>
-		<key>^</key>
-		<dict>
-			<key>weight</key>
-			<real>20</real>
-		</dict>
 		<key>^(.*/)?\.DS_Store$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>2000</real>
-		</dict>
-		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^.*</key>
 		<true/>
@@ -398,13 +386,6 @@
 			<true/>
 			<key>weight</key>
 			<real>20</real>
-		</dict>
-		<key>^[^/]+$</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^embedded\.provisionprofile$</key>
 		<dict>

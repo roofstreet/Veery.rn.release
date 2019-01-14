@@ -27,13 +27,9 @@ import org.json.JSONObject;
 import java.util.Calendar;
 
 // veery v2
-public class RNVeeryModule extends ReactContextBaseJavaModule implements LifecycleEventListener, Veery.LocationUpdate ,Veery.RouteMatch,Veery.PoiUpdate, Veery.PredictionUpdate{
+public class RNVeeryModule extends ReactContextBaseJavaModule implements LifecycleEventListener, Veery.LocationUpdate ,Veery.RouteMatch,Veery.PoiUpdate, Veery.PredictionUpdate/*, Veery.Synchronize*/{
   public static final String REACT_CLASS = "RNVeery";
-//  public static final int DEACTIVATE_ALL = Veery.DEACTIVATE_ALL;
-//  public static final int FOREGROUND = Veery.FOREGROUND;
-//  public static final int BACKGROUND = Veery.BACKGROUND;
-//  public static final int BACKEND = Veery.BACKEND;
-//  public static final int GEOPROFILE = Veery.GEOPROFILE;
+
   private static String TOKEN = "";
   private  static boolean TOKENN_SENT = false;
   private boolean mRequestLocation = false;
@@ -71,7 +67,6 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
     }else {
       ifVeery();
     }
-//    Log.i("RNVeery","ServiceConnect");
 
   }
 
@@ -97,13 +92,11 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
   public void setApiKeySecret(String apiKeySecret){
    if(ifVeery())
     veery.setApiKeySecret(apiKeySecret);
-//    Log.i(REACT_CLASS,"setApiKeySecret"+apiKeySecret);
   }
   @ReactMethod
   public void activate(int level){
    if(ifVeery())
     veery.activate(level);
-//    Log.i(REACT_CLASS,"activate "+level);
   }
   @ReactMethod
   public void setVeeryToken(String token){
@@ -141,7 +134,6 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
        map.putString("provider", location.getProvider());
        map.putDouble("speed", location.getSpeed());
        map.putDouble("time", location.getTime());
-       //Log.i(REACT_CLASS,"count = " +veery.countLocationHistory(1,null,null)+ ", Location = " + map.toString());
        position.invoke(map);
      }
    }
@@ -274,7 +266,6 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
       map.putDouble("speed", location.getSpeed());
       map.putDouble("time", location.getTime());
       map.putDouble("age", l);
-      //Log.i(REACT_CLASS, "LocationUpdate = " + map.toString());
       emitDeviceEvent("veeryLocationUpdate", map);
     }
   }
@@ -382,7 +373,6 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
 
      final WritableMap map = new WritableNativeMap();
 
-     //ArrayList<WritableMap> maps = new ArrayList<>();
      WritableArray maps = new WritableNativeArray();
      Location[] locations = mLocations.toArray();
      if (locations != null)
@@ -399,11 +389,10 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
          map1.putString("provider", locations[i].getProvider());
          map1.putDouble("speed", locations[i].getSpeed());
          map1.putDouble("time", locations[i].getTime());
-         //Log.i(REACT_CLASS,"mLocations["+i+"] = "+ map1);
          maps.pushMap(map1);
        }
      map.putArray("toArray", maps);
-     if (format == Veery.HISTORY_RAW/* HISTORY_RAW*/) {
+     if (format == Veery.HISTORY_RAW) {
        if (mLocations.toGeoJSON(Veery.GEOJSON_LINESTRING) != null) {
          map.putString("toGEOJSON_LINESTRING", mLocations.toGeoJSON(Veery.GEOJSON_LINESTRING).toString());
          map.putString("toGEOJSON_MULTIPOINT", mLocations.toGeoJSON(Veery.GEOJSON_MULTIPOINT).toString());
@@ -415,7 +404,6 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
        if (objects != null)
          for (int i = 0; i < objects.length; i++) {
            writableArray.pushString(objects[i].toString());
-           //Log.i(REACT_CLASS,"toGeoJSONArray mLocations["+i+"] = "+ objects.toString());
          }
        map.putArray("toGeoJSONArray", writableArray);
      }
@@ -423,25 +411,25 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
        WritableMap northeast = new WritableNativeMap();
        northeast.putDouble("latitude", mLocations.getBoundingBox().northeast.latitude);
        northeast.putDouble("longitude", mLocations.getBoundingBox().northeast.longitude);
-       //Log.i(REACT_CLASS,"northeast = "+ northeast);
+
        WritableMap southwest = new WritableNativeMap();
        southwest.putDouble("latitude", mLocations.getBoundingBox().southwest.latitude);
        southwest.putDouble("longitude", mLocations.getBoundingBox().southwest.longitude);
-       //Log.i(REACT_CLASS,"southwest = "+ southwest);
+
        WritableMap boundingbox = new WritableNativeMap();
        boundingbox.putMap("northeast", northeast);
        boundingbox.putMap("southwest", southwest);
-       //Log.i(REACT_CLASS,"getBoundingBox = "+ boundingbox);
+
        map.putMap("getBoundingBox", boundingbox);
      }
-     //Log.i(REACT_CLASS,"getLocationHistory = "+ map);
+
 
     return map;
   }
 
   private WritableMap poisToWritableMap(Veery.Pois pois){
     WritableMap map = new WritableNativeMap();
-    // Pois.toArray()
+
     WritableArray toArray = new WritableNativeArray();
     Location[] locations = pois.toArray();
     if (locations != null)
@@ -454,7 +442,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
 
     map.putArray("toArray",toArray);
 
-    // Pois.toGeoJSONArray()
+
     WritableArray toGeoJSONArray = new WritableNativeArray();
     JSONObject[] objects =  pois.toGeoJSONArray();
     if (objects != null)
@@ -463,10 +451,10 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
       }
     map.putArray("toGeoJSONArray",toGeoJSONArray);
 
-    // Pois.count()
+
     map.putInt("count",pois.count());
 
-    // Pois.getWeight
+
     WritableArray getWeight = new WritableNativeArray();
     for (int i=0; i < pois.count() ; i++){
       getWeight.pushDouble(pois.getWeight(i));
@@ -491,7 +479,7 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
 
 
       map.putDouble("DestinationLongitude", predictions.getDestinationLongitude());
-      // Predictions.getDestinationLatitude()
+
       map.putDouble("DestinationLatitude", predictions.getDestinationLatitude());
 
 
@@ -511,22 +499,19 @@ public class RNVeeryModule extends ReactContextBaseJavaModule implements Lifecyc
         }
 
       map.putArray("toLocations", tolocations);
-      // Predictions.getStartTrip()
+
       WritableMap startTrip = new WritableNativeMap();
       startTrip.putDouble("longitude", predictions.getStartTrip().getLongitude());
       startTrip.putDouble("latitude", predictions.getStartTrip().getLatitude());
       map.putMap("startTrip", startTrip);
-      // Predictions.startTime()
+
       Calendar startdate = predictions.getStartTime();
       map.putString("startTime", dateToString(startdate));
-      // Predictions.getStartName()
       map.putString("startName", predictions.getStartName());
-      // Predictions.getArrivalTime()
+
       Calendar arrivaldate = predictions.getArrivalTime();
       map.putString("arrivalTime", dateToString(arrivaldate));
-      // Predictions.getArrivalTimeUTC()
       map.putDouble("arrivalTimeUTC", predictions.getArrivalTimeUTC());
-      // Predictions.getArrivalName()
       map.putString("arrivalName", predictions.getArrivalName());
     }
     return map;
