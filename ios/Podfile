@@ -6,6 +6,6 @@ target 'RNVeery' do
   # use_frameworks!
 
   # Pods for RNVeery
-  pod 'Veery', ‘1.4.5’
+  pod 'Veery', ‘1.4.6’
  
 end
